@@ -12,9 +12,7 @@ import io.ktor.features.ContentNegotiation
 import io.ktor.features.DefaultHeaders
 import io.ktor.jackson.jackson
 import io.ktor.server.engine.ShutDownUrl
-import io.ktor.server.engine.commandLineEnvironment
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
+import io.ktor.server.netty.EngineMain
 import org.koin.ktor.ext.installKoin
 import org.koin.log.Logger.SLF4JLogger
 
@@ -27,6 +25,7 @@ fun Application.module() {
     install(DefaultHeaders)
     install(Compression)
     install(CallLogging)
+
     install(ContentNegotiation) {
         jackson {
             configure(SerializationFeature.INDENT_OUTPUT, true)
@@ -37,6 +36,7 @@ fun Application.module() {
             registerModule(JavaTimeModule())  // support java.time.* types
         }
     }
+
     install(ShutDownUrl.ApplicationCallFeature) {
         // The URL that will be intercepted
         shutDownUrl = "/shutdown"
@@ -45,9 +45,6 @@ fun Application.module() {
     }
 }
 
-fun main(args: Array<String>) {
-    embeddedServer(
-            Netty,
-            commandLineEnvironment(args)
-    ).start()
+fun main(args: Array<String>): Unit {
+    EngineMain.main(args)
 }
