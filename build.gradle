@@ -1,14 +1,16 @@
 buildscript {
     ext {
-        kotlin_version = '1.2.70'
-        ktor_version = '0.9.5'
-        koin_version = '1.0.1'
+        kotlin_version = '1.3.0'
+
+        ktor_version = '1.0.0-beta-3'
         jackson_version = '2.9.2'
-        mongodb_version = '3.8.2'
+
+        koin_version = '1.0.1'
+
         kotlin_logging_version = '1.6.10'
         logback_version = '1.2.1'
     }
-    
+
     repositories {
         mavenLocal()
         mavenCentral()
@@ -25,16 +27,16 @@ apply plugin: 'application'
 
 group 'com.jetpackr'
 version '2018.1'
-mainClassName = "io.ktor.server.netty.DevelopmentEngine"
+mainClassName = "io.ktor.server.netty.EngineMain"
 
-sourceCompatibility = 1.8
+sourceCompatibility = '1.8'
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = '1.8'
 }
 
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = '1.8'
 }
 
 sourceSets {
@@ -54,22 +56,20 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
-    compile "io.ktor:ktor-jackson:$ktor_version"
+    compile "io.ktor:ktor-server-core:$ktor_version"
     compile "io.ktor:ktor-server-netty:$ktor_version"
+    compile "io.ktor:ktor-jackson:$ktor_version"
 
     compile "org.koin:koin-ktor:$koin_version"
     compile "org.koin:koin-logger-slf4j:$koin_version"
 
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
 
-    compile "org.mongodb:mongodb-driver-async:$mongodb_version"
-
     compile "io.github.microutils:kotlin-logging:$kotlin_logging_version"
     compile "ch.qos.logback:logback-classic:$logback_version"
 
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
+
     // Testing
     testCompile 'org.koin:koin-test:1.0.1'
 }
-
-kotlin.experimental.coroutines = 'enable'
