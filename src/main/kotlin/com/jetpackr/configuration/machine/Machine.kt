@@ -11,7 +11,7 @@ class Machine(
         description: String,
         val box: Parameter,
         val memory: Parameter,
-        val synchorization: Parameter,
+        val synchronization: Parameter,
         val timezone: Timezone
 ): Metadata(
         name = name,

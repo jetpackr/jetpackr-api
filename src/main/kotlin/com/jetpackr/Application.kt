@@ -2,12 +2,20 @@ package com.jetpackr
 
 import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
+import com.fasterxml.jackson.databind.BeanDescription
+import com.fasterxml.jackson.databind.DeserializationConfig
+import com.fasterxml.jackson.databind.JsonDeserializer
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.databind.deser.BeanDeserializerModifier
+import com.fasterxml.jackson.databind.module.SimpleModule
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.jetpackr.configuration.Option
+import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.fasterxml.jackson.module.kotlin.readValue
 import com.jetpackr.configuration.Parameter
+import com.jetpackr.configuration.ParameterDeserializer
 import com.jetpackr.configuration.machine.Machine
-import com.jetpackr.configuration.machine.Timezone
 import io.ktor.application.Application
 import io.ktor.application.ApplicationStarted
 import io.ktor.application.install
@@ -56,43 +64,19 @@ fun Application.module() {
 
     @UseExperimental(KtorExperimentalAPI::class)
     environment.monitor.subscribe(ApplicationStarted, handler = {
-        val config = environment.config
+        val deserializerModule = SimpleModule()
 
-        val jetpackrConfig = config.config("jetpackr")
-        val machineConfig = jetpackrConfig.config("machine")
-        val boxConfig = machineConfig.config("box")
-        val memoryConfig = machineConfig.config("memory")
-        val timezoneConfig = machineConfig.config("timezone")
-        val synchronizationConfig = machineConfig.config("synchronization")
+        deserializerModule.setDeserializerModifier(object : BeanDeserializerModifier() {
+            override fun modifyDeserializer(config: DeserializationConfig, beanDesc: BeanDescription, deserializer: JsonDeserializer<*>): JsonDeserializer<*> {
+                return if (beanDesc.beanClass === Parameter::class.java) ParameterDeserializer(deserializer) else deserializer
+            }
+        })
 
-        val machine = Machine(
-                name = machineConfig.property("name").getString(),
-                label = machineConfig.property("label").getString(),
-                description = machineConfig.property("description").getString(),
-                box = Parameter(
-                        name = boxConfig.property("name").getString(),
-                        label = boxConfig.property("label").getString()
-                ),
-                memory = Parameter(
-                        name = memoryConfig.property("name").getString(),
-                        label = memoryConfig.property("label").getString()
-                ),
-                timezone = Timezone(
-                        name = timezoneConfig.property("name").getString(),
-                        label = timezoneConfig.property("label").getString()
-                ),
-                synchorization = Parameter(
-                        name = timezoneConfig.property("name").getString(),
-                        label = timezoneConfig.property("label").getString(),
-                        options = synchronizationConfig.configList("options").map {
-                            Option(
-                                    label = it.property("label").getString(),
-                                    value = it.property("value").getString()
-                            )
-                        }
-                )
-        )
+        val mapper = ObjectMapper(YAMLFactory()) // Enable YAML parsing
+        mapper.registerModule(deserializerModule)
+        mapper.registerModule(KotlinModule()) // Enable Kotlin support
 
+        val machine = mapper.readValue<Machine>(this::class.java.getResourceAsStream("/jetpackr/machine.yml"))
 
         log.debug("config: {}", machine )
     })

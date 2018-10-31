@@ -1,0 +1,18 @@
+name: ubuntu
+label: Ubuntu
+description: Ubuntu is an open source software platform that runs from the cloud, to the smartphone, to all your things.
+box:
+  name: box
+  label: Box
+  repository:
+    type: VagrantCloud
+    url: https://app.vagrantup.com/api/v1/search?q=official%20ubuntu&provider=virtualbox
+memory: { name: memory, label: Memory (MB), value: 4096 }
+timezone: { name: timezone, label: Timezone }
+synchronization:
+  name: synchronization
+  label: Synchronization
+  options:
+    - { label: None, value: none }
+    - { label: Guard, value: guard }
+    - { label: Rsync, value: rsync }
