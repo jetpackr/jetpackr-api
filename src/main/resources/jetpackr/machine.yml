@@ -4,11 +4,15 @@ description: Ubuntu is an open source software platform that runs from the cloud
 box:
   name: box
   label: Box
-  repository:
+  source:
     type: VagrantCloud
-    url: https://app.vagrantup.com/api/v1/search?q=official%20ubuntu&provider=virtualbox
+    url: https://app.vagrantup.com/api/v1/search?provider=virtualbox&q=official%20ubuntu
 memory: { name: memory, label: Memory (MB), value: 4096 }
-timezone: { name: timezone, label: Timezone }
+timezone:
+  name: timezone,
+  label: Timezone
+  source:
+    type: TimeZone
 synchronization:
   name: synchronization
   label: Synchronization
