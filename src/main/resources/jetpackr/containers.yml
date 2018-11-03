@@ -1,0 +1,208 @@
+###############
+# Data Stores #
+###############
+
+mysql:
+  name: mysql
+  label: MySQL
+  description: MySQL is the most popular Open Source SQL database management system.
+  type: DataStore
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/mysql/tags
+  install: { name: install, label: Install MySQL }
+  volumes:
+    mysql_conf: /etc/mysql/conf.d
+    mysql_data: /var/lib/mysql
+  ports:
+    - host: 3306
+      container: 3306
+  environment:
+    others:
+      - { name: MYSQL_ROOT_PASSWORD, label: Root Password, value: my_root_password }
+      - { name: MYSQL_DATABASE, label: Database, value: my_database }
+      - { name: MYSQL_USER, label: User, value: my_user }
+      - { name: MYSQL_PASSWORD, label: Password, value: my_password }
+
+mariadb:
+  name: mariadb
+  label: MariaDB
+  description: MariaDB is an enhanced, drop-in replacement for MySQL.
+  type: DataStore
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/mariadb/tags
+  install: { name: install, label: Install MariaDB }
+  volumes:
+    mariadb_conf: /etc/mysql/conf.d
+    mariadb_data: /var/lib/mariadb
+  ports:
+    - host: 3306
+      container: 3306
+  environment:
+    others:
+      - { name: MYSQL_ROOT_PASSWORD, label: Root Password, value: my_root_password }
+      - { name: MYSQL_DATABASE, label: Database, value: my_database }
+      - { name: MYSQL_USER, label: User, value: my_user }
+      - { name: MYSQL_PASSWORD, label: Password, value: my_password }
+
+postgres:
+  name: postgres
+  label: PostgreSQL
+  description: PostgreSQL is a powerful, open source object-relational database system.
+  type: DataStore
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/postgres/tags
+  install: { name: install, label: Install PostgreSQL }
+  volumes:
+    postgres_data: /var/lib/postgresql/data/pgdata
+  ports:
+    - host: 5432
+      container: 5432
+  environment:
+    defaults:
+      PGDATA: /var/lib/postgresql/data/pgdata
+    others:
+      - { name: POSTGRES_DB, label: Database, value: my_database }
+      - { name: POSTGRES_USER, label: User, value: my_user }
+      - { name: POSTGRES_PASSWORD, label: Password, value: my_password }
+
+mongo:
+  name: mongo
+  label: MongoDB
+  description: MongoDB is an open-source, document database designed for ease of development and scaling.
+  type: DataStore
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/mongo/tags
+  install: { name: install, label: Install MongoDB }
+  volumes:
+    mongo_data: /data/db
+  ports:
+    - host: 27017
+      container: 27017
+
+redis:
+  name: redis
+  label: Redis
+  description: Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker.
+  type: DataStore
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/redis/tags
+  install: { name: install, label: Install Redis }
+  command: redis-server --appendonly yes
+  volumes:
+    redis_conf: /usr/local/etc/redis
+    redis_data: /data
+  ports:
+    - host: 6379
+      container: 6379
+
+###################
+# Message Brokers #
+###################
+rabbitmq:
+  name: rabbitmq
+  label: RabbitMQ
+  description: RabbitMQ is a lightweight, reliable, scalable and portable message broker.
+  type: MessageBroker
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/rabbitmq/tags
+  install: { name: install, label: Install RabbitMQ }
+  volumes:
+    rabbitmq_conf: /etc/rabbitmq
+    rabbitmq_data: /var/lib/rabbitmq
+  ports:
+    - host: 5672
+      container: 5672
+  environment:
+    others:
+      - { name: RABBITMQ_DEFAULT_USER, label: User, value: my_user }
+      - { name: RABBITMQ_DEFAULT_PASS, label: Password, value: my_password }
+      - { name: RABBITMQ_NODE_NAME, label: Node Name, value: my_node@rabbitmq }
+      - { name: RABBITMQ_ERLANG_COOKIE, label: Erlang Cookie, value: my_erlang_cookie }
+
+eclipse-mosquitto:
+  name: eclipse-mosquitto
+  label: Eclipse Mosquitto
+  description: Eclipse Mosquitto is an open source message broker which implements MQTT version 3.1 and 3.1.1
+  type: MessageBroker
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/eclipse-mosquitto/tags
+  install: { name: install, label: Install RabbitMQ }
+  volumes:
+    eclipse-mosquitto_conf: /mosquitto/config
+    eclipse-mosquitto_data: /mosquitto/data
+    eclipse-mosquitto_log: /mosquitto/log
+  ports:
+    - host: 1883
+      container: 1883
+    - host: 9001
+      container: 9001
+
+# Search Engines
+
+elasticsearch:
+  name: elasticsearch
+  label: ElasticSearch
+  description: Elasticsearch is a distributed, open source search and analytics engine, designed for horizontal scalability, reliability, and easy management.
+  type: SearchEngine
+  # To be switched to https://api.github.com/repos/elastic/elasticsearch-docker/branches
+  # docker_url = docker.elastic.co/elasticsearch
+  # consider using repository { type: DockerHub, url: http://docker.com/etc }
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/elasticsearch/tags
+  install: { name: install, label: Install ElasticSearch }
+  volumes:
+    elasticsearch_conf: /usr/share/elasticsearch/config
+    elasticsearch_data: /usr/share/elasticsearch/data
+  ports:
+    - host: 9200
+      container: 9200
+
+solr:
+  name: solr
+  label: Solr
+  description: Solr is the popular, blazing-fast, open source enterprise search platform built on Apache Lucene.
+  type: SearchEngine
+  version:
+    name: version
+    label: Version
+    source:
+      type: DockerHub
+      url: https://registry.hub.docker.com/v2/repositories/library/solr/tags
+  install: { name: install, label: Install Solr }
+  volumes:
+    solr_data: /opt/solr/server/solr/mycores
+  ports:
+    - host: 8983
+      container: 8983
