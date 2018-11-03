@@ -1,12 +1,12 @@
-package com.jetpackr.configuration.parameter
+package com.jetpackr.common.data.parameter
 
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
-class Text(
+class Checkbox(
         name: String,
         label: String,
-        val value: String
+        val flag: Boolean? = false
 ): Parameter(
         name,
         label

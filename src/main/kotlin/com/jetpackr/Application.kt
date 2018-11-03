@@ -2,17 +2,12 @@ package com.jetpackr
 
 import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
-import com.fasterxml.jackson.databind.module.SimpleModule
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.jetpackr.common.mapper
 import com.jetpackr.configuration.container.Container
 import com.jetpackr.configuration.machine.Machine
-import com.jetpackr.configuration.parameter.Select
-import com.jetpackr.configuration.parameter.deserializer.SelectDeserializer
 import io.ktor.application.Application
 import io.ktor.application.ApplicationStarted
 import io.ktor.application.install
@@ -60,14 +55,6 @@ fun Application.module() {
 
     @UseExperimental(KtorExperimentalAPI::class)
     environment.monitor.subscribe(ApplicationStarted, handler = {
-        val mapper = ObjectMapper(YAMLFactory()) // Enable YAML parsing
-
-        val deserializerModule = SimpleModule()
-        deserializerModule.addDeserializer(Select::class.java, SelectDeserializer())
-
-        mapper.registerModule(deserializerModule)
-        mapper.registerModule(KotlinModule()) // Enable Kotlin support
-
         val machine = mapper.readValue<Machine>(this::class.java.getResourceAsStream("/jetpackr/machine.yml"))
         val containers = mapper.readValue<Map<String, Container>>(this::class.java.getResourceAsStream("/jetpackr/containers.yml"))
 

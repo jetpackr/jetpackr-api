@@ -1,8 +1,8 @@
 package com.jetpackr.configuration.machine
 
-import com.jetpackr.configuration.Metadata
-import com.jetpackr.configuration.parameter.Select
-import com.jetpackr.configuration.parameter.Text
+import com.jetpackr.common.data.Metadata
+import com.jetpackr.common.data.parameter.Select
+import com.jetpackr.common.data.parameter.Text
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 

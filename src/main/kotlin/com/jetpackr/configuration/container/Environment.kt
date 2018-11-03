@@ -1,6 +1,6 @@
 package com.jetpackr.configuration.container
 
-import com.jetpackr.configuration.parameter.Text
+import com.jetpackr.common.data.parameter.Text
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 

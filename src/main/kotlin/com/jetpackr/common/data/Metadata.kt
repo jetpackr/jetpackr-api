@@ -1,4 +1,4 @@
-package com.jetpackr.configuration
+package com.jetpackr.common.data
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import org.apache.commons.lang3.builder.ToStringBuilder

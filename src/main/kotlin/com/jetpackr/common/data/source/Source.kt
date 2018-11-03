@@ -1,4 +1,4 @@
-package com.jetpackr.configuration
+package com.jetpackr.common.data.source
 
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle

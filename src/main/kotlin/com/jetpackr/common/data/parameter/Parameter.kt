@@ -1,15 +1,13 @@
-package com.jetpackr.configuration.parameter
+package com.jetpackr.common.data.parameter
 
-import com.jetpackr.configuration.Source
+import com.jetpackr.common.data.Metadata
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
-class Select(
+open class Parameter(
         name: String,
-        label: String,
-        val options: List<Option>,
-        val source: Source? = null
-): Parameter(
+        label: String
+): Metadata(
         name,
         label
 ) {

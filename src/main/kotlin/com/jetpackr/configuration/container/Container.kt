@@ -1,8 +1,8 @@
 package com.jetpackr.configuration.container
 
+import com.jetpackr.common.data.parameter.Checkbox
+import com.jetpackr.common.data.parameter.Select
 import com.jetpackr.configuration.Platform
-import com.jetpackr.configuration.parameter.Checkbox
-import com.jetpackr.configuration.parameter.Select
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
