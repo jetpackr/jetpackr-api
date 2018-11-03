@@ -8,6 +8,7 @@ buildscript {
         koin_version = '1.0.1'
 
         commons_lang_version = '3.8.1'
+        maven_artifact_version = '3.3.9'
 
         kotlin_logging_version = '1.6.10'
         logback_version = '1.2.1'
@@ -53,6 +54,7 @@ repositories {
     mavenCentral()
     jcenter()
     maven { url 'https://kotlin.bintray.com/ktor' }
+    maven { url 'https://kotlin.bintray.com/kotlinx' }
 }
 
 dependencies {
@@ -61,6 +63,12 @@ dependencies {
     compile "io.ktor:ktor-server-core:$ktor_version"
     compile "io.ktor:ktor-server-netty:$ktor_version"
     compile "io.ktor:ktor-jackson:$ktor_version"
+
+    compile "io.ktor:ktor-client-core:$ktor_version"
+    compile "io.ktor:ktor-client-core-jvm:$ktor_version"
+    compile "io.ktor:ktor-client-apache:$ktor_version"
+    compile "io.ktor:ktor-client-json-jvm:$ktor_version"
+    compile "io.ktor:ktor-client-jackson:$ktor_version"
 
     compile "org.koin:koin-ktor:$koin_version"
     compile "org.koin:koin-logger-slf4j:$koin_version"
@@ -71,11 +79,13 @@ dependencies {
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
 
     compile "org.apache.commons:commons-lang3:$commons_lang_version"
+    compile "org.apache.maven:maven-artifact:$maven_artifact_version"
 
     compile "io.github.microutils:kotlin-logging:$kotlin_logging_version"
     compile "ch.qos.logback:logback-classic:$logback_version"
 
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
+    testCompile "io.ktor:ktor-client-mock:$ktor_version"
 
     // Testing
     testCompile 'org.koin:koin-test:1.0.1'
