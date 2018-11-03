@@ -2,20 +2,17 @@ package com.jetpackr
 
 import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
-import com.fasterxml.jackson.databind.BeanDescription
-import com.fasterxml.jackson.databind.DeserializationConfig
-import com.fasterxml.jackson.databind.JsonDeserializer
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
-import com.fasterxml.jackson.databind.deser.BeanDeserializerModifier
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.readValue
-import com.jetpackr.configuration.Parameter
-import com.jetpackr.configuration.ParameterDeserializer
+import com.jetpackr.configuration.container.Container
 import com.jetpackr.configuration.machine.Machine
+import com.jetpackr.configuration.parameter.Select
+import com.jetpackr.configuration.parameter.deserializer.SelectDeserializer
 import io.ktor.application.Application
 import io.ktor.application.ApplicationStarted
 import io.ktor.application.install
@@ -34,7 +31,6 @@ import org.koin.log.Logger.SLF4JLogger
 val log = KotlinLogging.logger {}
 
 fun Application.module() {
-
     installKoin(
             listOf(),
             logger = SLF4JLogger()
@@ -64,26 +60,20 @@ fun Application.module() {
 
     @UseExperimental(KtorExperimentalAPI::class)
     environment.monitor.subscribe(ApplicationStarted, handler = {
-        val deserializerModule = SimpleModule()
-
-        deserializerModule.setDeserializerModifier(object : BeanDeserializerModifier() {
-            override fun modifyDeserializer(config: DeserializationConfig, beanDesc: BeanDescription, deserializer: JsonDeserializer<*>): JsonDeserializer<*> {
-                return if (beanDesc.beanClass === Parameter::class.java) ParameterDeserializer(deserializer) else deserializer
-            }
-        })
-
         val mapper = ObjectMapper(YAMLFactory()) // Enable YAML parsing
+
+        val deserializerModule = SimpleModule()
+        deserializerModule.addDeserializer(Select::class.java, SelectDeserializer())
+
         mapper.registerModule(deserializerModule)
         mapper.registerModule(KotlinModule()) // Enable Kotlin support
 
         val machine = mapper.readValue<Machine>(this::class.java.getResourceAsStream("/jetpackr/machine.yml"))
+        val containers = mapper.readValue<Map<String, Container>>(this::class.java.getResourceAsStream("/jetpackr/containers.yml"))
 
-        log.debug("config: {}", machine )
+        log.debug("machine: {}", machine )
+        log.debug("containers: {}", containers )
     })
-
-
-
-
 }
 
 fun main(args: Array<String>): Unit {
