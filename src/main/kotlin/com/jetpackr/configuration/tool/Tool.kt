@@ -1,4 +1,4 @@
-package com.jetpackr.configuration.software
+package com.jetpackr.configuration.tool
 
 import com.jetpackr.common.data.parameter.Checkbox
 import com.jetpackr.common.data.parameter.Select
@@ -6,15 +6,15 @@ import com.jetpackr.configuration.Platform
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
-class Kit(
+class Tool(
         name: String,
         label: String,
         description: String,
         alias: String? = null,
         version: Select,
         install: Checkbox? = null,
-        val dependency: Kit? = null,
-        val extensions: List<Kit>? = null
+        val dependency: Tool? = null,
+        val extensions: List<Tool>? = null
 ): Platform(
         name,
         label,

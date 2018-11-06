@@ -8,7 +8,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.jetpackr.common.CommonModule
 import com.jetpackr.configuration.container.Container
-import com.jetpackr.configuration.software.Kit
+import com.jetpackr.configuration.tool.Tool
 import com.jetpackr.configuration.machine.Machine
 import io.ktor.application.Application
 import io.ktor.application.ApplicationStarted
@@ -61,7 +61,7 @@ fun Application.module() {
         val mapper: ObjectMapper by inject()
 
         val machine = mapper.readValue<Machine>(this::class.java.getResourceAsStream("/jetpackr/machine.yml"))
-        val kits = mapper.readValue<Map<String, Kit>>(this::class.java.getResourceAsStream("/jetpackr/kits.yml"))
+        val kits = mapper.readValue<Map<String, Tool>>(this::class.java.getResourceAsStream("/jetpackr/kits.yml"))
         val containers = mapper.readValue<Map<String, Container>>(this::class.java.getResourceAsStream("/jetpackr/containers.yml"))
 
         val jsonMapper = ObjectMapper()
