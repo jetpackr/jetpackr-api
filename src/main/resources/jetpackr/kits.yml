@@ -75,7 +75,7 @@ node:
         label: Version
         source:
           type: NPMRegistry
-          url: https://registry.npmjs.com/@vue/cli
+          url: https://registry.npmjs.com/@angular/cli
     - name: aurelia-cli
       label: Aurelia
       description: Aurelia is a JavaScript client framework for mobile, desktop and web leveraging simple conventions and empowering creativity.
