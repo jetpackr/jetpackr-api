@@ -13,6 +13,7 @@ import com.jetpackr.common.loader.GitHubLoader
 import com.jetpackr.common.loader.NPMRegistryLoader
 import com.jetpackr.common.loader.SDKMANLoader
 import com.jetpackr.common.loader.TimeZoneLoader
+import com.jetpackr.common.mapper.YamlMapper
 import com.jetpackr.common.service.SourceService
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache

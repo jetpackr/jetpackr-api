@@ -1,4 +1,4 @@
-package com.jetpackr.common
+package com.jetpackr.common.mapper
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
