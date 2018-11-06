@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import com.jetpackr.common.data.parameter.Option
 import com.jetpackr.common.data.parameter.Select
 import com.jetpackr.common.data.source.Source
-import com.jetpackr.common.loadOptionsFromSource
+import com.jetpackr.common.sourceService
 import mu.KotlinLogging
 import java.io.IOException
 
@@ -34,7 +34,7 @@ class SelectDeserializer: StdDeserializer<Select>(Select::class.java) {
 
             log.debug("Source: {}", source)
 
-            options = loadOptionsFromSource(source)
+            options = sourceService.loadFromSource(source)
         } else {
             val optionsNode = selectNode.get("options")
 
