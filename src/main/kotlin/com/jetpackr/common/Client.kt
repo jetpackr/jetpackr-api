@@ -8,7 +8,7 @@ import io.ktor.client.features.json.JsonFeature
 
 val client = HttpClient(Apache) {
     install(JsonFeature) {
-        serializer = JacksonSerializer() {
+        serializer = JacksonSerializer {
             configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         }
     }
