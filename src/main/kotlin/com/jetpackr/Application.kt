@@ -2,10 +2,11 @@ package com.jetpackr
 
 import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.readValue
-import com.jetpackr.common.mapper
+import com.jetpackr.common.CommonModule
 import com.jetpackr.configuration.container.Container
 import com.jetpackr.configuration.kit.Kit
 import com.jetpackr.configuration.machine.Machine
@@ -21,6 +22,7 @@ import io.ktor.server.engine.ShutDownUrl
 import io.ktor.server.netty.EngineMain
 import io.ktor.util.KtorExperimentalAPI
 import mu.KotlinLogging
+import org.koin.ktor.ext.inject
 import org.koin.ktor.ext.installKoin
 import org.koin.log.Logger.SLF4JLogger
 
@@ -28,7 +30,7 @@ val log = KotlinLogging.logger {}
 
 fun Application.module() {
     installKoin(
-            listOf(),
+            listOf(CommonModule),
             logger = SLF4JLogger()
     )
 
@@ -56,13 +58,22 @@ fun Application.module() {
 
     @UseExperimental(KtorExperimentalAPI::class)
     environment.monitor.subscribe(ApplicationStarted, handler = {
+        val mapper: ObjectMapper by inject()
+
         val machine = mapper.readValue<Machine>(this::class.java.getResourceAsStream("/jetpackr/machine.yml"))
         val kits = mapper.readValue<Map<String, Kit>>(this::class.java.getResourceAsStream("/jetpackr/kits.yml"))
         val containers = mapper.readValue<Map<String, Container>>(this::class.java.getResourceAsStream("/jetpackr/containers.yml"))
 
-        log.debug("machine: {}", machine)
-        log.debug("kits: {}", kits)
-        log.debug("containers: {}", containers)
+        val jsonMapper = ObjectMapper()
+        jsonMapper.configure(SerializationFeature.INDENT_OUTPUT, true)
+        jsonMapper.setDefaultPrettyPrinter(DefaultPrettyPrinter().apply {
+            indentArraysWith(DefaultPrettyPrinter.FixedSpaceIndenter.instance)
+            indentObjectsWith(DefaultIndenter("  ", "\n"))
+        })
+
+        log.debug("machine: {}", jsonMapper.writeValueAsString(machine))
+        log.debug("kits: {}", jsonMapper.writeValueAsString(kits))
+        log.debug("containers: {}", jsonMapper.writeValueAsString(containers))
     })
 }
 
