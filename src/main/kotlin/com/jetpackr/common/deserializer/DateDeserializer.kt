@@ -1,4 +1,4 @@
-package com.jetpackr.common.data.deserializer
+package com.jetpackr.common.deserializer
 
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.core.JsonProcessingException

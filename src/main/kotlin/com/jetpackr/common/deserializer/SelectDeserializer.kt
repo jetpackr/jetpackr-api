@@ -1,4 +1,4 @@
-package com.jetpackr.common.data.deserializer
+package com.jetpackr.common.deserializer
 
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.core.JsonProcessingException
@@ -8,11 +8,11 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import com.jetpackr.common.data.parameter.Option
 import com.jetpackr.common.data.parameter.Select
 import com.jetpackr.common.data.source.Source
-import com.jetpackr.common.sourceService
+import com.jetpackr.common.service.SourceService
 import mu.KotlinLogging
 import java.io.IOException
 
-class SelectDeserializer: StdDeserializer<Select>(Select::class.java) {
+class SelectDeserializer(private val sourceService: SourceService): StdDeserializer<Select>(Select::class.java) {
     private val log = KotlinLogging.logger {}
 
     @Throws(IOException::class, JsonProcessingException::class)
@@ -34,7 +34,7 @@ class SelectDeserializer: StdDeserializer<Select>(Select::class.java) {
 
             log.debug("Source: {}", source)
 
-            options = sourceService.loadFromSource(source)
+            options = sourceService.load(source)
         } else {
             val optionsNode = selectNode.get("options")
 
