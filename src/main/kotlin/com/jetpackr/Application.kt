@@ -8,7 +8,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.jetpackr.common.CommonModule
 import com.jetpackr.configuration.container.Container
-import com.jetpackr.configuration.kit.Kit
+import com.jetpackr.configuration.software.Kit
 import com.jetpackr.configuration.machine.Machine
 import io.ktor.application.Application
 import io.ktor.application.ApplicationStarted

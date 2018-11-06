@@ -1,7 +1,7 @@
 package com.jetpackr.configuration
 
 import com.jetpackr.configuration.container.Container
-import com.jetpackr.configuration.kit.Kit
+import com.jetpackr.configuration.software.Kit
 import com.jetpackr.configuration.machine.Machine
 
 class Jetpackr(

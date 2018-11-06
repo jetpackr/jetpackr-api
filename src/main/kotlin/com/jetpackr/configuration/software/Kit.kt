@@ -1,4 +1,4 @@
-package com.jetpackr.configuration.kit
+package com.jetpackr.configuration.software
 
 import com.jetpackr.common.data.parameter.Checkbox
 import com.jetpackr.common.data.parameter.Select
