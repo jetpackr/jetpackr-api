@@ -4,9 +4,11 @@ description: Ubuntu is an open source software platform that runs from the cloud
 box:
   name: box
   label: Box
-  source:
-    type: VagrantCloud
-    url: https://app.vagrantup.com/api/v1/search?provider=virtualbox&q=official%20ubuntu
+  options:
+    - label: Ubuntu 18.04 LTS (Bionic Beaver)
+      value: ubuntu/bionic64
+    - label: Ubuntu 16.04 LTS (Xenial Xerus)
+      value: ubuntu/xenial64
 memory: { name: memory, label: Memory (MB), value: 4096 }
 timezone:
   name: timezone,

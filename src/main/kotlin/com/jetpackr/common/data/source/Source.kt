@@ -13,7 +13,6 @@ class Source(
         GitHub,
         NPMRegistry,
         SDKMAN,
-        VagrantCloud,
 
         TimeZone
     }
