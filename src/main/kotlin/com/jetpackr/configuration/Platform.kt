@@ -12,7 +12,7 @@ open class Platform(
   description: String,
   alias: String? = null,
   val version: Select,
-  val install: Checkbox
+  val install: Checkbox? = null
 ): Metadata(
         name,
         label,

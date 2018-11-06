@@ -1,0 +1,173 @@
+jdk:
+  name: jdk
+  label: JDK
+  description: JDK (Java Development Kit) is a popular platform for development and deployment of portable applications for desktop and server environments.
+  version:
+    name: version
+    label: Version
+    source:
+      type: SDKMAN
+      url: https://api.sdkman.io/2/candidates/java/Linux64/versions/all
+  install: { name: install, label: Install JDK, value: true }
+  extensions:
+    - name: gradle
+      label: Gradle
+      description: Gradle is a build tool with a focus on build automation and support for multi-language development.
+      version:
+        name: version
+        label: Version
+        source:
+          type: SDKMAN
+          url: https://api.sdkman.io/2/candidates/gradle/Linux64/versions/all
+    - name: maven
+      label: Maven
+      description: Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
+      version:
+        name: version
+        label: Version
+        source:
+          type: SDKMAN
+          url: https://api.sdkman.io/2/candidates/gradle/Linux64/versions/all
+    - name: sbt
+      label: sbt
+      description: sbt is a build tool for Scala, Java, and more. It requires Java 1.8 or later.
+      version:
+        name: version
+        label: Version
+        source:
+          type: SDKMAN
+          url: https://api.sdkman.io/2/candidates/sbt/Linux64/versions/all
+node:
+  name: node
+  label: Node.js
+  description: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+  version:
+    name: version
+    label: Version
+    source:
+      type: GitHub
+      url: https://api.github.com/repos/nodejs/node/tags
+  install: { name: install, label: Install Node.js }
+  dependency:
+    name: nvm
+    label: Node Version Manager
+    description: Simple bash script to manage multiple active node.js versions
+    version:
+      name: version
+      label: Version
+      source:
+        type: GitHub
+        url: https://api.github.com/repos/creationix/nvm/tags
+  extensions:
+    - name: angular-cli
+      alias: '@angular/cli'
+      label: Angular
+      description: Angular is a development platform for building mobile and desktop web applications using Typescript/JavaScript (JS) and other languages.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/@vue/cli
+    - name: aurelia-cli
+      label: Aurelia
+      description: Aurelia is a JavaScript client framework for mobile, desktop and web leveraging simple conventions and empowering creativity.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/aurelia-cli
+    - name: ember-cli
+      label: Ember.js
+      description: Ember.js is a Javascript framework that greatly reduces the time, effort and resources needed to build any web application.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/ember-cli
+    - name: loopback-cli
+      label: Loopback
+      description: LoopBack makes it easy to build modern applications that require complex integrations.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/loopback-cli
+    - name: create-next-app
+      label: Next.js
+      description: Next.js is a minimalistic framework for server-rendered React applications.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/create-next-app
+    - name: create-nuxt-app
+      label: Nuxt.js
+      description: Nuxt.js is a framework for creating Universal Vue.js Applications.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/create-nuxt-app
+    - name: preact-cli
+      label: Preact
+      description: Fast 3kB React alternative with the same modern API. Components & Virtual DOM
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/preact-cli
+    - name: create-react-app
+      label: React
+      description: React is a declarative, efficient, and flexible JavaScript library for building user interfaces.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/create-react-app
+    - name: sails
+      label: Sails
+      description: Sails.js is a web framework that makes it easy to build custom, enterprise-grade Node.js apps.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/sails
+    - name: vue-cli
+      alias: '@vue/cli'
+      label: Vue.js
+      description: Vue.js is a library for building interactive web interfaces. It provides data-reactive components with a simple and flexible API.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/@vue/cli
+    - name: yo
+      label: Yeoman
+      description: Yeoman helps you to kickstart new projects, prescribing best practices and tools to help you stay productive.
+      version:
+        name: version
+        label: Version
+        source:
+          type: NPMRegistry
+          url: https://registry.npmjs.com/yo
+ruby:
+  name: ruby
+  label: Ruby
+  description: Ruby is the interpreted scripting language for quick and easy object-oriented programming. It has many features to process text files and to do system management tasks (as in Perl). It is simple, straight-forward, and extensible.
+  version:
+    name: version
+    label: Version
+    source:
+      type: GitHub
+      url: https://api.github.com/repos/ruby/ruby/tags
+  install: { name: install, label: Install Ruby }

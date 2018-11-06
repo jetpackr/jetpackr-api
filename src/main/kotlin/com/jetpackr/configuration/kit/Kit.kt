@@ -12,7 +12,7 @@ class Kit(
         description: String,
         alias: String? = null,
         version: Select,
-        install: Checkbox,
+        install: Checkbox? = null,
         val dependency: Kit? = null,
         val extensions: List<Kit>? = null
 ): Platform(
