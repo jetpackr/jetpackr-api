@@ -16,7 +16,7 @@ class Container(
         val type: Type,
         val command: String? = null,
         val volumes: Map<String, String>? = null,
-        val port: List<Port>? = null,
+        val ports: List<Port>? = null,
         val environment: Environment? = null
 ): Platform(
         name,
