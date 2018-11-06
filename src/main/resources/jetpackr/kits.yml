@@ -1,3 +1,6 @@
+#######
+# JDK #
+#######
 jdk:
   name: jdk
   label: JDK
@@ -37,6 +40,10 @@ jdk:
         source:
           type: SDKMAN
           url: https://api.sdkman.io/2/candidates/sbt/Linux64/versions/all
+
+###########
+# Node.js #
+###########
 node:
   name: node
   label: Node.js
@@ -160,6 +167,10 @@ node:
         source:
           type: NPMRegistry
           url: https://registry.npmjs.com/yo
+
+########
+# Ruby #
+########
 ruby:
   name: ruby
   label: Ruby
