@@ -9,6 +9,7 @@ import com.jetpackr.common.data.parameter.Option
 import com.jetpackr.common.data.parameter.Select
 import com.jetpackr.common.data.source.Source
 import com.jetpackr.common.service.SourceService
+import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import java.io.IOException
 
@@ -16,7 +17,7 @@ class SelectDeserializer(private val sourceService: SourceService): StdDeseriali
     private val log = KotlinLogging.logger {}
 
     @Throws(IOException::class, JsonProcessingException::class)
-    override fun deserialize(parser: JsonParser, context: DeserializationContext): Select {
+    override fun deserialize(parser: JsonParser, context: DeserializationContext): Select = runBlocking {
         log.debug("Deserializing 'Select' parameter...")
         // Special logic
 
@@ -46,6 +47,6 @@ class SelectDeserializer(private val sourceService: SourceService): StdDeseriali
                 throw Exception("'Select' parameter requires 'name', 'label', and one of 'options' or 'source'")
         }
 
-        return Select(name = name, label = label, options = options)
+        Select(name = name, label = label, options = options)
     }
 }
