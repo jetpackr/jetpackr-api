@@ -1,23 +1,26 @@
-package com.jetpackr.configuration.machine
+package com.jetpackr.configuration
 
-import com.jetpackr.common.data.Metadata
+import com.jetpackr.common.data.parameter.Checkbox
 import com.jetpackr.common.data.parameter.Select
-import com.jetpackr.common.data.parameter.Text
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
-class Machine(
+class Tool(
         name: String,
         label: String,
         description: String,
-        val box: Select,
-        val memory: Text,
-        val synchronization: Select,
-        val timezone: Select
-): Metadata(
+        alias: String? = null,
+        version: Select,
+        install: Checkbox? = null,
+        val dependency: Tool? = null,
+        val extensions: List<Tool>? = null
+): Platform(
         name,
         label,
-        description
+        description,
+        alias,
+        version,
+        install
 ) {
     override fun toString(): String {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE)
