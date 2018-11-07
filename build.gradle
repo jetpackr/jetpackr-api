@@ -7,6 +7,8 @@ buildscript {
 
         koin_version = '1.0.1'
 
+        caffeine_version = '2.6.2'
+
         commons_lang_version = '3.8.1'
         commons_io_version = '2.6'
         maven_artifact_version = '3.3.9'
@@ -79,13 +81,15 @@ dependencies {
     compile "io.ktor:ktor-client-json-jvm:$ktor_version"
     compile "io.ktor:ktor-client-jackson:$ktor_version"
 
-    compile "org.koin:koin-ktor:$koin_version"
-    compile "org.koin:koin-logger-slf4j:$koin_version"
-
     compile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version"
     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jackson_version"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
+
+    compile "org.koin:koin-ktor:$koin_version"
+    compile "org.koin:koin-logger-slf4j:$koin_version"
+
+    compile "com.github.ben-manes.caffeine:caffeine:$caffeine_version"
 
     compile "org.apache.commons:commons-lang3:$commons_lang_version"
     compile "commons-io:commons-io:$commons_io_version"
