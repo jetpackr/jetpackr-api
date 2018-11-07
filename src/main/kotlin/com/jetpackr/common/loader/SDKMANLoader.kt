@@ -5,7 +5,7 @@ import com.jetpackr.common.data.parameter.Option
 import com.jetpackr.common.filter.VersionFilter
 import io.ktor.client.request.get
 
-val SDKMANLoader: SourceLoader = { url, client ->
+val SDKMANLoader: SourceLoader = { client, url ->
     client.get<String>(url).split(",").filter(VersionFilter).sortedWith(VersionComparator).map {
         Option(value = it)
     }

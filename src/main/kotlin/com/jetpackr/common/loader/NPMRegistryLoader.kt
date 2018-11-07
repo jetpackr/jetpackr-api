@@ -6,7 +6,7 @@ import com.jetpackr.common.data.response.NPMRegistryResponse
 import com.jetpackr.common.filter.VersionFilter
 import io.ktor.client.request.get
 
-val NPMRegistryLoader: SourceLoader = { url, client ->
+val NPMRegistryLoader: SourceLoader = { client, url ->
     client.get<NPMRegistryResponse>(url).time.mapNotNull{
         if (setOf("modified", "created").contains(it.key))
             null

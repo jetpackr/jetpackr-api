@@ -6,7 +6,7 @@ import com.jetpackr.common.data.response.GitHubResponse
 import com.jetpackr.common.filter.VersionFilter
 import io.ktor.client.request.get
 
-val GitHubLoader: SourceLoader = { url, client ->
+val GitHubLoader: SourceLoader = { client, url ->
     client.get<List<GitHubResponse>>(url).mapNotNull{
         if (it.name.startsWith("v"))
             it.name

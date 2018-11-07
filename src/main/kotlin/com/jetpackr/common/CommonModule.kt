@@ -23,6 +23,16 @@ import org.koin.dsl.module.module
 
 val CommonModule = module {
     single {
+        HttpClient (Apache) {
+            install(JsonFeature) {
+                serializer = JacksonSerializer {
+                    configure(FAIL_ON_UNKNOWN_PROPERTIES, false)
+                }
+            }
+        }
+    }
+
+    single("sourceLoaders") {
         mapOf(
                 DockerHub to DockerHubLoader,
                 GitHub to GitHubLoader,
@@ -33,17 +43,7 @@ val CommonModule = module {
     }
 
     single {
-        HttpClient (Apache) {
-            install(JsonFeature) {
-                serializer = JacksonSerializer {
-                    configure(FAIL_ON_UNKNOWN_PROPERTIES, false)
-                }
-            }
-        }
-    }
-
-    single {
-        SourceService(get(), get())
+        SourceService(get(), get("sourceLoaders"))
     }
 
     single {

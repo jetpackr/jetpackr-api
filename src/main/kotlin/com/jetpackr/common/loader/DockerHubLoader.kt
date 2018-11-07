@@ -6,7 +6,7 @@ import com.jetpackr.common.data.response.DockerHubResponse
 import com.jetpackr.common.filter.VersionFilter
 import io.ktor.client.request.get
 
-val DockerHubLoader: SourceLoader = { url, client ->
+val DockerHubLoader: SourceLoader = { client, url ->
     val versions = mutableListOf<String>()
     var response = client.get<DockerHubResponse>(url)
 

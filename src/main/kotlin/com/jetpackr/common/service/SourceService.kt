@@ -6,14 +6,14 @@ import com.jetpackr.common.loader.SourceLoader
 import io.ktor.client.HttpClient
 
 class SourceService(
-        private val sourceLoaders: Map<Source.Type, SourceLoader>,
-        private val client: HttpClient
+        private val client: HttpClient,
+        private val sourceLoaders: Map<Source.Type, SourceLoader>
 ) {
     suspend fun load(source: Source): List<Option> {
         val sourceLoader = sourceLoaders[source.type]
 
         if (sourceLoader != null)
-            return sourceLoader.invoke(source.url, client)
+            return sourceLoader.invoke(client, source.url)
         else
             throw RuntimeException("${source.type}'s Source Loader is empty")
     }
