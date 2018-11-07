@@ -1,24 +1,25 @@
-name: ubuntu
-label: Ubuntu
-description: Ubuntu is an open source software platform that runs from the cloud, to the smartphone, to all your things.
-box:
-  name: box
-  label: Box
-  options:
-    - label: Ubuntu 18.04 LTS (Bionic Beaver)
-      value: ubuntu/bionic64
-    - label: Ubuntu 16.04 LTS (Xenial Xerus)
-      value: ubuntu/xenial64
-memory: { name: memory, label: Memory (MB), value: 4096 }
-timezone:
-  name: timezone,
-  label: Timezone
-  source:
-    type: TimeZone
-synchronization:
-  name: synchronization
-  label: Synchronization
-  options:
-    - { label: None, value: none }
-    - { label: Guard, value: guard }
-    - { label: Rsync, value: rsync }
+machine:
+  name: ubuntu
+  label: Ubuntu
+  description: Ubuntu is an open source software platform that runs from the cloud, to the smartphone, to all your things.
+  box:
+    name: box
+    label: Box
+    options:
+      - label: Ubuntu 18.04 LTS (Bionic Beaver)
+        value: ubuntu/bionic64
+      - label: Ubuntu 16.04 LTS (Xenial Xerus)
+        value: ubuntu/xenial64
+  memory: { name: memory, label: Memory (MB), value: 4096 }
+  timezone:
+    name: timezone,
+    label: Timezone
+    source:
+      type: TimeZone
+  synchronization:
+    name: synchronization
+    label: Synchronization
+    options:
+      - { label: None, value: none }
+      - { label: Guard, value: guard }
+      - { label: Rsync, value: rsync }
