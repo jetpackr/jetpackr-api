@@ -56,24 +56,6 @@ fun Application.module() {
     routing {
         generator()
     }
-
-//    @UseExperimental(KtorExperimentalAPI::class)
-//    environment.monitor.subscribe(ApplicationStarted, handler = {
-//        val generatorService: GeneratorService by inject()
-//        val jetpackr = generatorService.load()
-//
-//        val jsonMapper = ObjectMapper()
-//
-//        jsonMapper.configure(SerializationFeature.INDENT_OUTPUT, true)
-//        jsonMapper.setDefaultPrettyPrinter(DefaultPrettyPrinter().apply {
-//            indentArraysWith(DefaultPrettyPrinter.FixedSpaceIndenter.instance)
-//            indentObjectsWith(DefaultIndenter("  ", "\n"))
-//        })
-//
-//        jsonMapper.setSerializationInclusion(Include.NON_NULL)
-//
-//        log.info("Let see what we have here!!!: {}", jsonMapper.writeValueAsString(jetpackr))
-//    })
 }
 
 fun main(args: Array<String>): Unit {
