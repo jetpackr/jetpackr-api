@@ -1,5 +1,6 @@
 package com.jetpackr
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include
 import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -7,9 +8,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.jetpackr.common.CommonModule
-import com.jetpackr.configuration.container.Container
-import com.jetpackr.configuration.tool.Tool
-import com.jetpackr.configuration.machine.Machine
+import com.jetpackr.configuration.Jetpackr
 import io.ktor.application.Application
 import io.ktor.application.ApplicationStarted
 import io.ktor.application.install
@@ -25,6 +24,9 @@ import mu.KotlinLogging
 import org.koin.ktor.ext.inject
 import org.koin.ktor.ext.installKoin
 import org.koin.log.Logger.SLF4JLogger
+import java.io.ByteArrayInputStream
+import java.io.SequenceInputStream
+import java.util.Collections
 
 val log = KotlinLogging.logger {}
 
@@ -41,11 +43,12 @@ fun Application.module() {
     install(ContentNegotiation) {
         jackson {
             configure(SerializationFeature.INDENT_OUTPUT, true)
+            registerModule(JavaTimeModule())  // support java.time.* types
+            setSerializationInclusion(Include.NON_NULL)
             setDefaultPrettyPrinter(DefaultPrettyPrinter().apply {
                 indentArraysWith(DefaultPrettyPrinter.FixedSpaceIndenter.instance)
                 indentObjectsWith(DefaultIndenter("  ", "\n"))
             })
-            registerModule(JavaTimeModule())  // support java.time.* types
         }
     }
 
@@ -60,9 +63,19 @@ fun Application.module() {
     environment.monitor.subscribe(ApplicationStarted, handler = {
         val mapper: ObjectMapper by inject()
 
-        val machine = mapper.readValue<Machine>(this::class.java.getResourceAsStream("/jetpackr/machine.yml"))
-        val kits = mapper.readValue<Map<String, Tool>>(this::class.java.getResourceAsStream("/jetpackr/kits.yml"))
-        val containers = mapper.readValue<Map<String, Container>>(this::class.java.getResourceAsStream("/jetpackr/containers.yml"))
+        val inputStream = SequenceInputStream(
+                Collections.enumeration(
+                        setOf(
+                                this::class.java.getResourceAsStream("/jetpackr/machine.yml"),
+                                ByteArrayInputStream("\n".toByteArray()),
+                                this::class.java.getResourceAsStream("/jetpackr/kits.yml"),
+                                ByteArrayInputStream("\n".toByteArray()),
+                                this::class.java.getResourceAsStream("/jetpackr/containers.yml")
+                        )
+                )
+        )
+
+        val jetpackr = mapper.readValue<Jetpackr>(inputStream)
 
         val jsonMapper = ObjectMapper()
         jsonMapper.configure(SerializationFeature.INDENT_OUTPUT, true)
@@ -70,10 +83,9 @@ fun Application.module() {
             indentArraysWith(DefaultPrettyPrinter.FixedSpaceIndenter.instance)
             indentObjectsWith(DefaultIndenter("  ", "\n"))
         })
+        jsonMapper.setSerializationInclusion(Include.NON_NULL)
 
-        log.debug("machine: {}", jsonMapper.writeValueAsString(machine))
-        log.debug("kits: {}", jsonMapper.writeValueAsString(kits))
-        log.debug("containers: {}", jsonMapper.writeValueAsString(containers))
+        log.debug("jetpackr: {}", jsonMapper.writeValueAsString(jetpackr))
     })
 }
 
