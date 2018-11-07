@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.ToStringStyle
 
 class Source(
         val type: Type,
-        val url: String? = null
+        val url: String = "_undefined_"
 ) {
     enum class Type {
         // 3rd party APIs
