@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.ToStringStyle
 class Checkbox(
         name: String,
         label: String,
-        val flag: Boolean? = false
+        val checked: Boolean? = false
 ): Parameter(
         name,
         label
