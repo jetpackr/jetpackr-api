@@ -23,13 +23,13 @@ class GeneratorService constructor(
 
         cache = builder.build {
             log.info("Build for key: {}", it)
-            initialize()
+            build()
         }
 
-        cache.put("jetpackr", initialize())
+        cache.put("jetpackr", build())
     }
 
-    private fun initialize(): Jetpackr {
+    private fun build(): Jetpackr {
         val inputStreams = mutableListOf<InputStream>()
 
         for ((index, file) in files.withIndex()) {
