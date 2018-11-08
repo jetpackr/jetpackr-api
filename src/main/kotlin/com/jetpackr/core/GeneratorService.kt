@@ -13,17 +13,23 @@ import java.util.Collections
 
 class GeneratorService constructor(
         private val mapper: ObjectMapper,
-        builder: Caffeine<String, Jetpackr>,
-        private val files: List<String>) {
+        private val files: List<String>,
+        block: Caffeine<String, Jetpackr>.() -> Unit) {
     private val cache: LoadingCache<String, Jetpackr>
 
     init {
-        cache = builder.build { initialize() }
-        cache.get("jetpackr") { initialize() }
+        @Suppress("UNCHECKED_CAST")
+        val builder = (Caffeine.newBuilder() as Caffeine<String, Jetpackr>).apply(block)
+
+        cache = builder.build {
+            log.info("Build for key: {}", it)
+            initialize()
+        }
+
+        cache.put("jetpackr", initialize())
     }
 
     private fun initialize(): Jetpackr {
-        log.info("initializing....")
         val inputStreams = mutableListOf<InputStream>()
 
         for ((index, file) in files.withIndex()) {
