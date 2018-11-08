@@ -5,7 +5,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.benmanes.caffeine.cache.Caffeine
 import com.github.benmanes.caffeine.cache.LoadingCache
 import com.jetpackr.configuration.Jetpackr
-import com.jetpackr.log
+import mu.KotlinLogging
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.io.SequenceInputStream
@@ -15,6 +15,7 @@ class GeneratorService constructor(
         private val mapper: ObjectMapper,
         private val files: List<String>,
         block: Caffeine<String, Jetpackr>.() -> Unit) {
+    private val log = KotlinLogging.logger {}
     private val cache: LoadingCache<String, Jetpackr>
 
     init {
@@ -22,8 +23,10 @@ class GeneratorService constructor(
         val builder = (Caffeine.newBuilder() as Caffeine<String, Jetpackr>).apply(block)
 
         cache = builder.build {
-            log.info("Build for key: {}", it)
-            build()
+            log.info("Reloading cache...")
+            val jetpackr = build()
+            log.info("Cache has been reloaded successfully")
+            jetpackr
         }
 
         cache.put("jetpackr", build())
