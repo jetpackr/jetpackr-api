@@ -19,7 +19,6 @@ class SelectDeserializer(private val sourceService: SourceService): StdDeseriali
     @Throws(IOException::class, JsonProcessingException::class)
     override fun deserialize(parser: JsonParser, context: DeserializationContext): Select = runBlocking {
         log.debug("Deserializing 'Select' parameter...")
-        // Special logic
 
         val codec = parser.codec
         val selectNode: JsonNode = codec.readTree(parser)
