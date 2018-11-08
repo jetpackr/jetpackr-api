@@ -12,7 +12,6 @@ val CoreModule = module {
                 "/jetpackr/containers.yml"
         )) {
             maximumSize(100)
-            expireAfterWrite(5, TimeUnit.DAYS)
             refreshAfterWrite(5, TimeUnit.DAYS)
         }
     }
