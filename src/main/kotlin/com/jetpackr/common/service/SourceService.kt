@@ -7,13 +7,15 @@ import io.ktor.client.HttpClient
 
 class SourceService(
         private val client: HttpClient,
-        private val sourceLoaders: Map<Source.Type, SourceLoader>
+        private val loaders: Map<Source.Type, SourceLoader>
 ) {
     suspend fun load(source: Source): List<Option> {
-        val sourceLoader = sourceLoaders[source.type]
+        val loader = loaders[source.type]
 
-        if (sourceLoader != null)
-            return sourceLoader.invoke(client, source.url)
+        if (loader != null)
+            return loader.load(source.url).map {
+                Option(value = it)
+            }
         else
             throw RuntimeException("${source.type}'s Source Loader is empty")
     }

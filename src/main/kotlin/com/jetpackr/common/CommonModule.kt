@@ -34,11 +34,11 @@ val CommonModule = module {
 
     single("sourceLoaders") {
         mapOf(
-                DockerHub to DockerHubLoader,
-                GitHub to GitHubLoader,
-                NPMRegistry to NPMRegistryLoader,
-                SDKMAN to SDKMANLoader,
-                TimeZone to TimeZoneLoader
+                DockerHub to DockerHubLoader(get()),
+                GitHub to GitHubLoader(get()),
+                NPMRegistry to NPMRegistryLoader(get()),
+                SDKMAN to SDKMANLoader(get()),
+                TimeZone to TimeZoneLoader(get())
         )
     }
 

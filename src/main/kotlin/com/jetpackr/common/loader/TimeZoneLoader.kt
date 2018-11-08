@@ -1,13 +1,15 @@
 package com.jetpackr.common.loader
 
-import com.jetpackr.common.data.parameter.Option
+import io.ktor.client.HttpClient
 import java.util.TimeZone
 
-val TimeZoneLoader: SourceLoader = { _, _ ->
-    TimeZone.getAvailableIDs().mapNotNull { it ->
-        if (!it.startsWith("SystemV"))
-            Option(value = it)
-        else
-            null
+class TimeZoneLoader(client: HttpClient): SourceLoader(client) {
+    override suspend fun load(url: String): List<String> {
+        return TimeZone.getAvailableIDs().mapNotNull { it ->
+            if (!it.startsWith("SystemV"))
+                it
+            else
+                null
+        }
     }
 }
