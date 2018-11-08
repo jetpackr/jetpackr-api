@@ -23,9 +23,9 @@ class GeneratorService constructor(
         val builder = (Caffeine.newBuilder() as Caffeine<String, Jetpackr>).apply(block)
 
         cache = builder.build {
-            log.info("Reloading cache...")
+            log.info("Rebuilding the cache...")
             val jetpackr = build()
-            log.info("Cache has been reloaded successfully")
+            log.info("The cache is ready")
             jetpackr
         }
 
