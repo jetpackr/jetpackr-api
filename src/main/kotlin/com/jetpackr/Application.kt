@@ -5,9 +5,6 @@ import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.jetpackr.common.CommonModule
-import com.jetpackr.core.CoreModule
-import com.jetpackr.core.generator
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.CallLogging
@@ -26,7 +23,11 @@ val log = KotlinLogging.logger {}
 
 fun Application.module() {
     installKoin(
-            listOf(CommonModule, CoreModule),
+            listOf(
+                    SourceModule,
+                    MapperModule,
+                    GeneratorModule
+            ),
             logger = SLF4JLogger()
     )
 
