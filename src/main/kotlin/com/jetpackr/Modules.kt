@@ -73,14 +73,6 @@ val CacheModule = module {
     }
 
     single(createOnStart=true) {
-        single("data") {
-            listOf(
-                    "/jetpackr/machine.yml",
-                    "/jetpackr/kits.yml",
-                    "/jetpackr/containers.yml"
-            )
-        }
-
         @Suppress("UNCHECKED_CAST")
         CacheService(get(), get("data")) {
             maximumSize(100)
