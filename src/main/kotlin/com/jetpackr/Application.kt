@@ -26,6 +26,7 @@ fun Application.module() {
             listOf(
                     SourceModule,
                     MapperModule,
+                    CacheModule,
                     GeneratorModule
             ),
             logger = SLF4JLogger()
@@ -55,6 +56,7 @@ fun Application.module() {
     }
 
     routing {
+        cache()
         generator()
     }
 }

@@ -2,6 +2,7 @@ package com.jetpackr
 
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.databind.JsonDeserializer
+import com.jetpackr.cache.CacheService
 import com.jetpackr.data.parameter.Select
 import com.jetpackr.generator.GeneratorService
 import com.jetpackr.mapper.YamlMapper
@@ -62,7 +63,7 @@ val MapperModule = module {
     }
 }
 
-val GeneratorModule = module {
+val CacheModule = module {
     single("data") {
         listOf(
                 "/jetpackr/machine.yml",
@@ -72,10 +73,24 @@ val GeneratorModule = module {
     }
 
     single(createOnStart=true) {
+        single("data") {
+            listOf(
+                    "/jetpackr/machine.yml",
+                    "/jetpackr/kits.yml",
+                    "/jetpackr/containers.yml"
+            )
+        }
+
         @Suppress("UNCHECKED_CAST")
-        (GeneratorService(get(), get("data")) {
+        CacheService(get(), get("data")) {
             maximumSize(100)
             refreshAfterWrite(5, DAYS)
-        })
+        }
+    }
+}
+
+val GeneratorModule = module {
+    single {
+        GeneratorService()
     }
 }
