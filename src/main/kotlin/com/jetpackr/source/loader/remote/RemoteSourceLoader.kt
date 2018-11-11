@@ -1,7 +1,5 @@
-package com.jetpackr.source.loader
+package com.jetpackr.source.loader.remote
 
-import com.jetpackr.source.common.SourceComparator
-import com.jetpackr.source.common.SourceFilter
 import io.ktor.client.HttpClient
 
 abstract class RemoteSourceLoader(protected val client: HttpClient) {

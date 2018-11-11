@@ -13,11 +13,11 @@ import com.jetpackr.source.Source.Type.NPMRegistry
 import com.jetpackr.source.Source.Type.SDKMAN
 import com.jetpackr.source.Source.Type.TimeZone
 import com.jetpackr.source.SourceService
-import com.jetpackr.source.loader.DockerHubLoader
-import com.jetpackr.source.loader.GitHubLoader
-import com.jetpackr.source.loader.NPMRegistryLoader
-import com.jetpackr.source.loader.SDKMANLoader
-import com.jetpackr.source.loader.TimeZoneLoader
+import com.jetpackr.source.loader.remote.DockerHubLoader
+import com.jetpackr.source.loader.remote.GitHubLoader
+import com.jetpackr.source.loader.remote.NPMRegistryLoader
+import com.jetpackr.source.loader.remote.SDKMANLoader
+import com.jetpackr.source.loader.local.TimeZoneLoader
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache
 import io.ktor.client.features.json.JacksonSerializer

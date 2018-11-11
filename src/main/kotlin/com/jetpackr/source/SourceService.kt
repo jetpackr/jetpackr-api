@@ -1,8 +1,8 @@
 package com.jetpackr.source
 
 import com.jetpackr.data.parameter.Option
-import com.jetpackr.source.loader.LocalSourceLoader
-import com.jetpackr.source.loader.RemoteSourceLoader
+import com.jetpackr.source.loader.local.LocalSourceLoader
+import com.jetpackr.source.loader.remote.RemoteSourceLoader
 
 class SourceService(
         private val localSourceLoaders: Map<Source.Type, LocalSourceLoader>,

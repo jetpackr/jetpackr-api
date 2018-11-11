@@ -1,7 +1,5 @@
-package com.jetpackr.source.loader
+package com.jetpackr.source.loader.remote
 
-import com.jetpackr.source.common.SourceComparator
-import com.jetpackr.source.common.SourceFilter
 import com.jetpackr.source.response.GitHubResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
