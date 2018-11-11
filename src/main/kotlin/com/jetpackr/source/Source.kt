@@ -8,12 +8,13 @@ class Source(
         val url: String? = null
 ) {
     enum class Type {
-        // 3rd party APIs
+        // Remote Source
         DockerHub,
         GitHub,
         NPMRegistry,
         SDKMAN,
 
+        // Local Source
         TimeZone
     }
 
