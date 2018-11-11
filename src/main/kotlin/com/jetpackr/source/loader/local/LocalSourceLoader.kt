@@ -1,5 +1,7 @@
 package com.jetpackr.source.loader.local
 
-abstract class LocalSourceLoader {
-    abstract suspend fun load(): List<String>
+import com.jetpackr.source.loader.SourceLoader
+
+abstract class LocalSourceLoader: SourceLoader() {
+    final override suspend fun load(url: String): List<String> = TODO("Not implemented")
 }
