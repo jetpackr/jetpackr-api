@@ -1,15 +1,15 @@
 package com.jetpackr.source.loader
 
-import com.jetpackr.source.comparator.VersionComparator
-import com.jetpackr.source.filter.VersionFilter
+import com.jetpackr.source.common.SourceComparator
+import com.jetpackr.source.common.SourceFilter
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 
-class SDKMANLoader(client: HttpClient): SourceLoader(client) {
-    override suspend fun load(url: String): List<String> {
+class SDKMANLoader(client: HttpClient): RemoteSourceLoader(client) {
+    override suspend fun doLoad(url: String): List<String> {
         return client.get<String>(url)
                 .split(",")
-                .filter(VersionFilter)
-                .sortedWith(VersionComparator)
+                .filter(SourceFilter)
+                .sortedWith(SourceComparator)
     }
 }

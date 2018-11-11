@@ -36,18 +36,26 @@ val SourceModule = module {
         }
     }
 
-    single("sourceLoaders") {
+    single("localSourceLoaders") {
+        mapOf(
+                TimeZone to TimeZoneLoader()
+        )
+    }
+
+    single("remoteSourceLoaders") {
         mapOf(
                 DockerHub to DockerHubLoader(get()),
                 GitHub to GitHubLoader(get()),
                 NPMRegistry to NPMRegistryLoader(get()),
-                SDKMAN to SDKMANLoader(get()),
-                TimeZone to TimeZoneLoader(get())
+                SDKMAN to SDKMANLoader(get())
         )
     }
 
     single {
-        SourceService(get("sourceLoaders"))
+        SourceService(
+                get("localSourceLoaders"),
+                get("remoteSourceLoaders")
+        )
     }
 }
 

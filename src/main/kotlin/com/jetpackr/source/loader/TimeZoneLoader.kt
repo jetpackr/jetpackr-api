@@ -1,10 +1,9 @@
 package com.jetpackr.source.loader
 
-import io.ktor.client.HttpClient
 import java.util.TimeZone
 
-class TimeZoneLoader(client: HttpClient): SourceLoader(client) {
-    override suspend fun load(url: String): List<String> {
+class TimeZoneLoader: LocalSourceLoader() {
+    override suspend fun load(): List<String> {
         return TimeZone.getAvailableIDs().mapNotNull { it ->
             if (!it.startsWith("SystemV"))
                 it
