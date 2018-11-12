@@ -5,17 +5,13 @@ import org.apache.commons.lang3.builder.ToStringStyle
 
 class Source(
         val type: Type,
-        val url: String? = null
+        val url: String
 ) {
     enum class Type {
-        // Remote Source
         DockerHub,
         GitHub,
         NPMRegistry,
-        SDKMAN,
-
-        // Local Source
-        TimeZone
+        SDKMAN
     }
 
     override fun toString(): String {
