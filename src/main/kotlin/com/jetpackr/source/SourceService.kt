@@ -7,11 +7,14 @@ class SourceService(
         private val loaders: Map<Source.Type, SourceLoader>
 ) {
     suspend fun load(source: Source): List<Option> {
-        return when(source.url.isNullOrBlank()) {
-            true -> loaders[source.type]!!.load()
-            false -> loaders[source.type]!!.load(source.url)
-        }.map {
-            Option(value = it)
-        }
+
+        val loader = loaders[source.type]
+
+        if (loader == null)
+            throw RuntimeException("${source.type}'s Source Loader is empty")
+        else
+            return loader.load(source.url).map {
+                Option(value = it)
+            }
     }
 }

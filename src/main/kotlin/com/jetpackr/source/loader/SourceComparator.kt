@@ -1,4 +1,4 @@
-package com.jetpackr.source.loader.remote
+package com.jetpackr.source.loader
 
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion
 
