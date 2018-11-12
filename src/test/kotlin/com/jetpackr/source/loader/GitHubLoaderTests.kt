@@ -1,4 +1,4 @@
-package com.jetpackr.source.loader.remote
+package com.jetpackr.source.loader
 
 import io.kotlintest.specs.StringSpec
 
