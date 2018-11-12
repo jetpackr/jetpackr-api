@@ -5,17 +5,13 @@ machine:
   box:
     name: box
     label: Box
+    full: true
     options:
       - label: Ubuntu 18.04 LTS (Bionic Beaver)
         value: ubuntu/bionic64
       - label: Ubuntu 16.04 LTS (Xenial Xerus)
         value: ubuntu/xenial64
   memory: { name: memory, label: Memory (MB), value: 4096 }
-  timezone:
-    name: timezone,
-    label: Timezone
-    source:
-      type: TimeZone
   synchronization:
     name: synchronization
     label: Synchronization
@@ -23,3 +19,8 @@ machine:
       - { label: None, value: none }
       - { label: Guard, value: guard }
       - { label: Rsync, value: rsync }
+  timezone:
+    name: timezone,
+    label: Timezone
+    full: true
+    options: []
