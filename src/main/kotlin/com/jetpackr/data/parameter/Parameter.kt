@@ -6,7 +6,8 @@ import org.apache.commons.lang3.builder.ToStringStyle
 
 open class Parameter(
         name: String,
-        label: String
+        label: String,
+        val full: Boolean
 ): Metadata(
         name,
         label

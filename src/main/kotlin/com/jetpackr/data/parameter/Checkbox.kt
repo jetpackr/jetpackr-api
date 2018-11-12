@@ -6,10 +6,12 @@ import org.apache.commons.lang3.builder.ToStringStyle
 class Checkbox(
         name: String,
         label: String,
-        val checked: Boolean? = false
+        full: Boolean = false,
+        val checked: Boolean = false
 ): Parameter(
         name,
-        label
+        label,
+        full
 ) {
     override fun toString(): String {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE)
