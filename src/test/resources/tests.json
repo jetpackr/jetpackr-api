@@ -6,6 +6,7 @@
     "box": {
       "name": "box",
       "label": "Box",
+      "span": true,
       "options": [
         {
           "label": "Ubuntu 18.04 LTS (Bionic Beaver)",
@@ -15,18 +16,18 @@
           "label": "Ubuntu 16.04 LTS (Xenial Xerus)",
           "value": "ubuntu/xenial64"
         }
-      ],
-      "span": false
+      ]
     },
     "memory": {
       "name": "memory",
       "label": "Memory (MB)",
-      "value": "4096",
-      "span": false
+      "span": false,
+      "value": "4096"
     },
     "synchronization": {
       "name": "synchronization",
       "label": "Synchronization",
+      "span": false,
       "options": [
         {
           "label": "None",
@@ -40,16 +41,15 @@
           "label": "Rsync",
           "value": "rsync"
         }
-      ],
-      "span": false
+      ]
     },
     "timezone": {
       "name": "timezone,",
       "label": "Timezone",
+      "span": true,
       "options": [
 
-      ],
-      "span": false
+      ]
     }
   },
   "kits": {
@@ -60,6 +60,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "12.ea.17-open"
@@ -103,14 +104,13 @@
           {
             "value": "1.0.0-rc7-graal"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install JDK",
-        "checked": true,
-        "span": false
+        "span": false,
+        "checked": true
       },
       "extensions": [
         {
@@ -120,7 +120,11 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
+              {
+                "value": "5.0-rc-3"
+              },
               {
                 "value": "5.0-rc-2"
               },
@@ -319,8 +323,7 @@
               {
                 "value": "0.7"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -330,6 +333,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "3.6.0"
@@ -349,8 +353,7 @@
               {
                 "value": "3.3.9"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -360,6 +363,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "1.2.6"
@@ -430,8 +434,7 @@
               {
                 "value": "0.13.9"
               }
-            ],
-            "span": false
+            ]
           }
         }
       ]
@@ -443,6 +446,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "v11.1.0"
@@ -534,14 +538,13 @@
           {
             "value": "v9.5.0"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install Node.js",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "dependency": {
         "name": "nvm",
@@ -550,6 +553,7 @@
         "version": {
           "name": "version",
           "label": "Version",
+          "span": false,
           "options": [
             {
               "value": "v0.33.11"
@@ -641,8 +645,7 @@
             {
               "value": "v0.26.1"
             }
-          ],
-          "span": false
+          ]
         }
       },
       "extensions": [
@@ -654,6 +657,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "7.1.0-beta.1"
@@ -1219,8 +1223,7 @@
               {
                 "value": "1.0.0-beta.28.3"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -1230,6 +1233,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "1.0.0-beta.4"
@@ -1558,8 +1562,7 @@
               {
                 "value": "0.0.0"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -1569,6 +1572,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "3.6.0-beta.1"
@@ -2161,8 +2165,7 @@
               {
                 "value": "0.0.0"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -2172,6 +2175,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "4.2.1"
@@ -2227,8 +2231,7 @@
               {
                 "value": "0.1.0"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -2238,6 +2241,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "0.5.9"
@@ -2305,8 +2309,7 @@
               {
                 "value": "0.0.0"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -2316,6 +2319,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "2.1.1"
@@ -2383,8 +2387,7 @@
               {
                 "value": "0.0.0"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -2394,6 +2397,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "3.0.0-next.14"
@@ -2494,8 +2498,7 @@
               {
                 "value": "0.1.0"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -2505,6 +2508,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "2.1.1"
@@ -2683,8 +2687,7 @@
               {
                 "value": "0.0.0"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -2694,6 +2697,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "1.1.0-3"
@@ -3313,8 +3317,7 @@
               {
                 "value": "0.0.0"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -3325,6 +3328,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "3.1.3"
@@ -3479,8 +3483,7 @@
               {
                 "value": "3.0.0-alpha.1"
               }
-            ],
-            "span": false
+            ]
           }
         },
         {
@@ -3490,6 +3493,7 @@
           "version": {
             "name": "version",
             "label": "Version",
+            "span": false,
             "options": [
               {
                 "value": "2.0.5"
@@ -3662,8 +3666,7 @@
               {
                 "value": "1.0.0-beta.1"
               }
-            ],
-            "span": false
+            ]
           }
         }
       ]
@@ -3675,6 +3678,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "v2_6_0_preview3"
@@ -3763,14 +3767,13 @@
           {
             "value": "v2_3_0"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install Ruby",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       }
     }
   },
@@ -3782,6 +3785,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "8.0.13"
@@ -4047,14 +4051,13 @@
           {
             "value": "5"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install MySQL",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "DataStore",
       "volumes": {
@@ -4072,26 +4075,26 @@
           {
             "name": "MYSQL_ROOT_PASSWORD",
             "label": "Root Password",
-            "value": "my_root_password",
-            "span": false
+            "span": false,
+            "value": "my_root_password"
           },
           {
             "name": "MYSQL_DATABASE",
             "label": "Database",
-            "value": "my_database",
-            "span": false
+            "span": false,
+            "value": "my_database"
           },
           {
             "name": "MYSQL_USER",
             "label": "User",
-            "value": "my_user",
-            "span": false
+            "span": false,
+            "value": "my_user"
           },
           {
             "name": "MYSQL_PASSWORD",
             "label": "Password",
-            "value": "my_password",
-            "span": false
+            "span": false,
+            "value": "my_password"
           }
         ]
       }
@@ -4103,6 +4106,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "10.3.10-bionic"
@@ -4530,14 +4534,13 @@
           {
             "value": "5"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install MariaDB",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "DataStore",
       "volumes": {
@@ -4555,26 +4558,26 @@
           {
             "name": "MYSQL_ROOT_PASSWORD",
             "label": "Root Password",
-            "value": "my_root_password",
-            "span": false
+            "span": false,
+            "value": "my_root_password"
           },
           {
             "name": "MYSQL_DATABASE",
             "label": "Database",
-            "value": "my_database",
-            "span": false
+            "span": false,
+            "value": "my_database"
           },
           {
             "name": "MYSQL_USER",
             "label": "User",
-            "value": "my_user",
-            "span": false
+            "span": false,
+            "value": "my_user"
           },
           {
             "name": "MYSQL_PASSWORD",
             "label": "Password",
-            "value": "my_password",
-            "span": false
+            "span": false,
+            "value": "my_password"
           }
         ]
       }
@@ -4586,6 +4589,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "11.1-alpine"
@@ -5253,14 +5257,13 @@
           {
             "value": "8"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install PostgreSQL",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "DataStore",
       "volumes": {
@@ -5280,20 +5283,20 @@
           {
             "name": "POSTGRES_DB",
             "label": "Database",
-            "value": "my_database",
-            "span": false
+            "span": false,
+            "value": "my_database"
           },
           {
             "name": "POSTGRES_USER",
             "label": "User",
-            "value": "my_user",
-            "span": false
+            "span": false,
+            "value": "my_user"
           },
           {
             "name": "POSTGRES_PASSWORD",
             "label": "Password",
-            "value": "my_password",
-            "span": false
+            "span": false,
+            "value": "my_password"
           }
         ]
       }
@@ -5305,6 +5308,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "4.1.5-xenial"
@@ -6047,14 +6051,13 @@
           {
             "value": "2"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install MongoDB",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "DataStore",
       "volumes": {
@@ -6074,6 +6077,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "5.0.1-32bit-stretch"
@@ -6696,14 +6700,13 @@
           {
             "value": "2"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install Redis",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "DataStore",
       "command": "redis-server --appendonly yes",
@@ -6725,6 +6728,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "3.7.8-management-alpine"
@@ -7224,14 +7228,13 @@
           {
             "value": "3"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install RabbitMQ",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "MessageBroker",
       "volumes": {
@@ -7249,26 +7252,26 @@
           {
             "name": "RABBITMQ_DEFAULT_USER",
             "label": "User",
-            "value": "my_user",
-            "span": false
+            "span": false,
+            "value": "my_user"
           },
           {
             "name": "RABBITMQ_DEFAULT_PASS",
             "label": "Password",
-            "value": "my_password",
-            "span": false
+            "span": false,
+            "value": "my_password"
           },
           {
             "name": "RABBITMQ_NODE_NAME",
             "label": "Node Name",
-            "value": "my_node@rabbitmq",
-            "span": false
+            "span": false,
+            "value": "my_node@rabbitmq"
           },
           {
             "name": "RABBITMQ_ERLANG_COOKIE",
             "label": "Erlang Cookie",
-            "value": "my_erlang_cookie",
-            "span": false
+            "span": false,
+            "value": "my_erlang_cookie"
           }
         ]
       }
@@ -7280,6 +7283,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "1.5.4"
@@ -7302,14 +7306,13 @@
           {
             "value": "1.4.4"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install RabbitMQ",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "MessageBroker",
       "volumes": {
@@ -7335,6 +7338,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "6.4.2"
@@ -7762,14 +7766,13 @@
           {
             "value": "1"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install ElasticSearch",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "SearchEngine",
       "volumes": {
@@ -7790,6 +7793,7 @@
       "version": {
         "name": "version",
         "label": "Version",
+        "span": false,
         "options": [
           {
             "value": "7.5-slim"
@@ -8211,14 +8215,13 @@
           {
             "value": "5"
           }
-        ],
-        "span": false
+        ]
       },
       "install": {
         "name": "install",
         "label": "Install Solr",
-        "checked": false,
-        "span": false
+        "span": false,
+        "checked": false
       },
       "type": "SearchEngine",
       "volumes": {
