@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringStyle
 open class Parameter(
         name: String,
         label: String,
-        val full: Boolean
+        val span: Boolean
 ): Metadata(
         name,
         label

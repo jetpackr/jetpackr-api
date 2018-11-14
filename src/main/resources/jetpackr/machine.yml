@@ -5,7 +5,7 @@ machine:
   box:
     name: box
     label: Box
-    full: true
+    span: true
     options:
       - label: Ubuntu 18.04 LTS (Bionic Beaver)
         value: ubuntu/bionic64
@@ -22,5 +22,5 @@ machine:
   timezone:
     name: timezone,
     label: Timezone
-    full: true
+    span: true
     options: []

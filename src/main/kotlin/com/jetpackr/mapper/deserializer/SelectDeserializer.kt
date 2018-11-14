@@ -16,7 +16,6 @@ import java.io.IOException
 class SelectDeserializer(private val sourceService: SourceService): StdDeserializer<Select>(Select::class.java) {
     private val log = KotlinLogging.logger {}
 
-
     @Throws(IOException::class, JsonProcessingException::class)
     override fun deserialize(parser: JsonParser, context: DeserializationContext): Select = runBlocking {
         log.debug("Deserializing 'Select' parameter...")
@@ -26,7 +25,7 @@ class SelectDeserializer(private val sourceService: SourceService): StdDeseriali
 
         val name = selectNode.get("name").asText()
         val label = selectNode.get("label").asText()
-        val full = selectNode.get("full")?.asBoolean() ?: false
+        val span = selectNode.get("span")?.asBoolean() ?: false
         val options: List<Option>
 
         val sourceNode = selectNode.get("source")
@@ -48,6 +47,6 @@ class SelectDeserializer(private val sourceService: SourceService): StdDeseriali
                 throw Exception("'Select' parameter requires 'name', 'label', and one of 'options' or 'source'")
         }
 
-        Select(name, label, full, options)
+        Select(name, label, span, options)
     }
 }
