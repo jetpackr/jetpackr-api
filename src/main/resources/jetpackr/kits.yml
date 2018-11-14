@@ -29,7 +29,7 @@ kits:
           label: Version
           source:
             type: SDKMAN
-            url: https://api.sdkman.io/2/candidates/gradle/Linux64/versions/all
+            url: https://api.sdkman.io/2/candidates/maven/Linux64/versions/all
       - name: sbt
         label: sbt
         description: sbt is a build tool for Scala, Java, and more. It requires Java 1.8 or later.
