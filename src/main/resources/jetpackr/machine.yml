@@ -23,4 +23,5 @@ machine:
     name: timezone,
     label: Timezone
     span: true
-    options: []
+    source:
+      local: Timezone

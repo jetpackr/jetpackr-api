@@ -4,14 +4,21 @@ import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
 class Source(
-        val type: Type,
-        val url: String
+        val local: Local = Local.None,
+        val remote: Remote = Remote.None,
+        val url: String = "https://"
 ) {
-    enum class Type {
+    enum class Local {
+        Timezone,
+        None
+    }
+
+    enum class Remote {
         DockerHub,
         GitHub,
         NPMRegistry,
-        SDKMAN
+        SDKMAN,
+        None
     }
 
     override fun toString(): String {

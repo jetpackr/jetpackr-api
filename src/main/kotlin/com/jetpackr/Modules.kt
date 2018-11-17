@@ -7,15 +7,17 @@ import com.jetpackr.data.parameter.Select
 import com.jetpackr.generator.GeneratorService
 import com.jetpackr.mapper.YamlMapper
 import com.jetpackr.mapper.deserializer.SelectDeserializer
-import com.jetpackr.source.Source.Type.DockerHub
-import com.jetpackr.source.Source.Type.GitHub
-import com.jetpackr.source.Source.Type.NPMRegistry
-import com.jetpackr.source.Source.Type.SDKMAN
+import com.jetpackr.source.Source.Local.Timezone
+import com.jetpackr.source.Source.Remote.DockerHub
+import com.jetpackr.source.Source.Remote.GitHub
+import com.jetpackr.source.Source.Remote.NPMRegistry
+import com.jetpackr.source.Source.Remote.SDKMAN
 import com.jetpackr.source.SourceService
-import com.jetpackr.source.loader.DockerHubLoader
-import com.jetpackr.source.loader.GitHubLoader
-import com.jetpackr.source.loader.NPMRegistryLoader
-import com.jetpackr.source.loader.SDKMANLoader
+import com.jetpackr.source.loader.local.TimezoneLoader
+import com.jetpackr.source.loader.remote.DockerHubLoader
+import com.jetpackr.source.loader.remote.GitHubLoader
+import com.jetpackr.source.loader.remote.NPMRegistryLoader
+import com.jetpackr.source.loader.remote.SDKMANLoader
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache
 import io.ktor.client.features.json.JacksonSerializer
@@ -34,7 +36,13 @@ val SourceModule = module {
         }
     }
 
-    single {
+    single("localLoaders") {
+        mapOf(
+                Timezone to TimezoneLoader()
+        )
+    }
+
+    single("remoteLoaders") {
         mapOf(
                 DockerHub to DockerHubLoader(get()),
                 GitHub to GitHubLoader(get()),
@@ -44,7 +52,7 @@ val SourceModule = module {
     }
 
     single {
-        SourceService(get())
+        SourceService(get("localLoaders"), get("remoteLoaders"))
     }
 }
 
