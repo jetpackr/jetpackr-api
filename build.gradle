@@ -13,6 +13,9 @@ buildscript {
         commons_io_version = '2.6'
         maven_artifact_version = '3.3.9'
 
+        time4j_version = '5.0'
+        tzdata_version = "2018g"
+
         kotlin_logging_version = '1.6.10'
         logback_version = '1.2.1'
 
@@ -95,6 +98,10 @@ dependencies {
     compile "commons-io:commons-io:$commons_io_version"
     compile "org.apache.maven:maven-artifact:$maven_artifact_version"
 
+
+    compile "net.time4j:time4j-base:$time4j_version"
+    compile "net.time4j:time4j-tzdata:$time4j_version-$tzdata_version"
+
     compile "io.github.microutils:kotlin-logging:$kotlin_logging_version"
     compile "ch.qos.logback:logback-classic:$logback_version"
 
@@ -102,9 +109,9 @@ dependencies {
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
     testCompile "io.ktor:ktor-server-test-host:$ktor_version"
     testCompile "io.ktor:ktor-client-tests:$ktor_version"
-    testCompile "io.ktor:ktor-client-mock:1.0.0-beta-3"
+    testCompile "io.ktor:ktor-client-mock-jvm:$ktor_version"
 
-    testCompile 'org.koin:koin-test:1.0.1'
+    testCompile "org.koin:koin-test:$koin_version"
 
     testCompile "io.kotlintest:kotlintest-runner-junit5:$kotlin_test_version"
     testImplementation "org.amshove.kluent:kluent:$kluent_version"
