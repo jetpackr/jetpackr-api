@@ -1,8 +1,8 @@
-package com.jetpackr.source.loader
+package com.jetpackr.source.loader.remote
 
 import io.kotlintest.specs.StringSpec
 
-class SourceComparatorTests : StringSpec() {
+class VersionComparatorTests : StringSpec() {
     init {
         "test on Ruby's versions" {
             TODO()

@@ -4,7 +4,7 @@ import io.kotlintest.specs.StringSpec
 
 class SourceServiceTests : StringSpec() {
     init {
-        "return versions for  Source(type = Source.Type.GitHub, url = 'https://api.github.com/repos/ruby/ruby/tags')" {
+        "return versions for  Source(remote = Source.Remote.GitHub, url = 'https://api.github.com/repos/ruby/ruby/tags')" {
             TODO()
         }
 
