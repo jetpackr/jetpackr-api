@@ -1,8 +1,8 @@
 package com.jetpackr.data.configuration.container
 
+import com.jetpackr.data.configuration.Platform
 import com.jetpackr.data.parameter.Checkbox
 import com.jetpackr.data.parameter.Select
-import com.jetpackr.data.configuration.Platform
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
@@ -13,7 +13,7 @@ class Container(
         version: Select,
         install: Checkbox,
 
-        val type: Type,
+        val category: Category,
         val command: String? = null,
         val volumes: Map<String, String>? = null,
         val ports: List<Port>? = null,
@@ -26,7 +26,7 @@ class Container(
         version,
         install
 ) {
-    enum class Type {
+    enum class Category {
         DataStore,
         MessageBroker,
         SearchEngine
