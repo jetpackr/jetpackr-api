@@ -1,8 +1,8 @@
 package com.jetpackr.source
 
 import com.jetpackr.data.parameter.Option
-import com.jetpackr.source.loader.remote.RemoteLoader
 import com.jetpackr.source.loader.local.LocalLoader
+import com.jetpackr.source.loader.remote.RemoteLoader
 
 class SourceService(
         private val localLoaders: Map<Source.Local, LocalLoader>,
@@ -12,21 +12,20 @@ class SourceService(
         val localLoader = localLoaders[source.local]
         val remoteLoader = remoteLoaders[source.remote]
 
-        if (localLoader != null)
-            return localLoader.load().map {
+        return when {
+            localLoader != null -> localLoader.load().map {
                 if (it.key == it.value)
                     Option(value = it.value)
                 else
                     Option(it.key, it.value)
             }
-        else if (remoteLoader != null)
-            return remoteLoader.load(source.url).map {
+            remoteLoader != null -> remoteLoader.load(source.url).map {
                 if (it.key == it.value)
                     Option(value = it.value)
                 else
                     Option(it.key, it.value)
             }
-        else
-            throw RuntimeException("${source.remote}'s Source Loader is empty")
+            else -> throw RuntimeException("Local/Remote Loader is not available")
+        }
     }
 }
