@@ -8,7 +8,7 @@ kits:
       name: version
       label: Version
       source:
-        type: SDKMAN
+        remote: SDKMAN
         url: https://api.sdkman.io/2/candidates/java/Linux64/versions/all
     install: { name: install, label: Install JDK, checked: true }
     extensions:
@@ -19,7 +19,7 @@ kits:
           name: version
           label: Version
           source:
-            type: SDKMAN
+            remote: SDKMAN
             url: https://api.sdkman.io/2/candidates/gradle/Linux64/versions/all
       - name: maven
         label: Maven
@@ -28,7 +28,7 @@ kits:
           name: version
           label: Version
           source:
-            type: SDKMAN
+            remote: SDKMAN
             url: https://api.sdkman.io/2/candidates/maven/Linux64/versions/all
       - name: sbt
         label: sbt
@@ -37,7 +37,7 @@ kits:
           name: version
           label: Version
           source:
-            type: SDKMAN
+            remote: SDKMAN
             url: https://api.sdkman.io/2/candidates/sbt/Linux64/versions/all
 ### Node.js ###
   node:
@@ -48,7 +48,7 @@ kits:
       name: version
       label: Version
       source:
-        type: GitHub
+        remote: GitHub
         url: https://api.github.com/repos/nodejs/node/tags
     install: { name: install, label: Install Node.js }
     dependency:
@@ -59,7 +59,7 @@ kits:
         name: version
         label: Version
         source:
-          type: GitHub
+          remote: GitHub
           url: https://api.github.com/repos/creationix/nvm/tags
     extensions:
       - name: angular-cli
@@ -70,7 +70,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/@angular/cli
       - name: aurelia-cli
         label: Aurelia
@@ -79,7 +79,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/aurelia-cli
       - name: ember-cli
         label: Ember.js
@@ -88,7 +88,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/ember-cli
       - name: loopback-cli
         label: Loopback
@@ -97,7 +97,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/loopback-cli
       - name: create-next-app
         label: Next.js
@@ -106,7 +106,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/create-next-app
       - name: create-nuxt-app
         label: Nuxt.js
@@ -115,7 +115,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/create-nuxt-app
       - name: preact-cli
         label: Preact
@@ -124,7 +124,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/preact-cli
       - name: create-react-app
         label: React
@@ -133,7 +133,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/create-react-app
       - name: sails
         label: Sails
@@ -142,7 +142,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/sails
       - name: vue-cli
         alias: '@vue/cli'
@@ -152,7 +152,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/@vue/cli
       - name: yo
         label: Yeoman
@@ -161,7 +161,7 @@ kits:
           name: version
           label: Version
           source:
-            type: NPMRegistry
+            remote: NPMRegistry
             url: https://registry.npmjs.com/yo
 ### Ruby ###
   ruby:
@@ -172,6 +172,6 @@ kits:
       name: version
       label: Version
       source:
-        type: GitHub
+        remote: GitHub
         url: https://api.github.com/repos/ruby/ruby/tags
     install: { name: install, label: Install Ruby }
