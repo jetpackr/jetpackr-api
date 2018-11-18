@@ -160,9 +160,6 @@ containers:
     label: ElasticSearch
     description: Elasticsearch is a distributed, open source search and analytics engine, designed for horizontal scalability, reliability, and easy management.
     category: SearchEngine
-    # To be switched to https://api.github.com/repos/elastic/elasticsearch-docker/branches
-    # docker_url = docker.elastic.co/elasticsearch
-    # consider using repository { remote: DockerHub, url: http://docker.com/etc }
     version:
       name: version
       label: Version
