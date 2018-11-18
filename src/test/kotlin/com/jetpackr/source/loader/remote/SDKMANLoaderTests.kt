@@ -12,38 +12,49 @@ import kotlinx.coroutines.io.ByteReadChannel
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import org.amshove.kluent.`should be equal to`
-import org.amshove.kluent.shouldContainAll
+import org.amshove.kluent.`should contain all`
 
 class SDKMANLoaderTests : StringSpec() {
     val log = KotlinLogging.logger {}
 
-    val GRADLE_URL = "https://api.sdkman.io/2/candidates/gradle/Linux64/versions/all"
-    val MAVEN_URL = "https://api.sdkman.io/2/candidates/maven/Linux64/versions/all"
-    val SBT_URL = "https://api.sdkman.io/2/candidates/sbt/Linux64/versions/all"
+    val GRADLE = Pair(
+            "https://api.sdkman.io/2/candidates/gradle/Linux64/versions/all",
+            "4.5.1,4.6,4.7,4.8,4.8.1,4.9,5.0-rc-1,5.0-rc-2"
+    )
+
+    val MAVEN = Pair(
+            "https://api.sdkman.io/2/candidates/maven/Linux64/versions/all",
+            "3.3.9,3.5.0,3.5.2,3.5.3,3.5.4,3.6.0"
+    )
+
+    val SBT = Pair(
+            "https://api.sdkman.io/2/candidates/sbt/Linux64/versions/all",
+            "1.2.4,1.2.5,1.2.6"
+    )
 
     val mockEngine = MockEngine {
         when (url.fullUrl) {
-            GRADLE_URL -> {
+            GRADLE.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel("4.5.1,4.6,4.7,4.8,4.8.1,4.9,5.0-rc-1,5.0-rc-2".toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(GRADLE.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Text.Plain.toString()))
                 )
             }
-            MAVEN_URL -> {
+            MAVEN.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel("3.3.9,3.5.0,3.5.2,3.5.3,3.5.4,3.6.0".toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(MAVEN.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Text.Plain.toString()))
                 )
             }
-            SBT_URL -> {
+            SBT.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel("1.2.4,1.2.5,1.2.6".toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(SBT.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Text.Plain.toString()))
                 )
             }
@@ -57,27 +68,38 @@ class SDKMANLoaderTests : StringSpec() {
     val loader = SDKMANLoader(client)
 
     init {
-        "return versions for 'Gradle'" {
+        "test releases for 'Gradle'" {
             runBlocking {
-                val releases = loader.load(GRADLE_URL)
+                val releases = loader.load(GRADLE.first)
+                log.info("releases: {}", releases)
                 releases.size `should be equal to` 8
-                releases.values shouldContainAll listOf("5.0-rc-1", "4.5.1", "4.8.1", "4.8")
+                releases.values `should contain all`  listOf("5.0-rc-1", "4.5.1", "4.8.1", "4.8")
             }
         }
 
-        "return versions for 'Maven'" {
+        "test releases for 'Maven'" {
             runBlocking {
-                val releases = loader.load(MAVEN_URL)
+                val releases = loader.load(MAVEN.first)
+
+                log.info("releases: {}", releases)
+
                 releases.size `should be equal to` 6
-                releases.values shouldContainAll listOf("3.5.3", "3.3.9", "3.6.0")
+                releases.values `should contain all`  listOf("3.5.3", "3.3.9", "3.6.0")
+
+                Any()
             }
         }
 
-        "return versions for 'sbt'" {
+        "test releases for 'sbt'" {
             runBlocking {
-                val releases = loader.load(SBT_URL)
+                val releases = loader.load(SBT.first)
+
+                log.info("releases: {}", releases)
+
                 releases.size `should be equal to` 3
-                releases.values shouldContainAll listOf("1.2.6", "1.2.5", "1.2.4")
+                releases.values `should contain all` listOf("1.2.6", "1.2.5", "1.2.4")
+
+                Any()
             }
         }
     }
