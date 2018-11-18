@@ -21,6 +21,15 @@ kits:
           source:
             remote: SDKMAN
             url: https://api.sdkman.io/2/candidates/gradle/Linux64/versions/all
+      - name: jbake
+        label: JBake
+        description: JBake is a Java based, open source, static site/blog generator for developers & designers.
+        version:
+          name: version
+          label: Version
+          source:
+            remote: SDKMAN
+            url: https://api.sdkman.io/2/candidates/jbake/Linux64/versions/all
       - name: maven
         label: Maven
         description: Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
