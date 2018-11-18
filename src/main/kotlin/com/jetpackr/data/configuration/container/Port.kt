@@ -7,7 +7,6 @@ class Port(
         val host: Int,
         val container: Int
 ) {
-
     override fun toString(): String {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE)
     }
