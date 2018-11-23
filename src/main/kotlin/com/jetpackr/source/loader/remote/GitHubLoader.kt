@@ -5,7 +5,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 
 class GitHubLoader(client: HttpClient): RemoteLoader(client) {
-    override suspend fun doLoad(url: String): Map<String, String> {
+    override suspend fun doLoad(url: String): List<Pair<String, String>> {
         return client.get<List<GitHubResponse>>(url)
                 .mapNotNull {
                     if (it.name.startsWith("v"))
@@ -13,6 +13,6 @@ class GitHubLoader(client: HttpClient): RemoteLoader(client) {
                     else
                         null
                 }
-                .associate { it to it }
+                .map { Pair(it, it) }
     }
 }

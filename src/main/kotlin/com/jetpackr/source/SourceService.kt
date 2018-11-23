@@ -14,16 +14,16 @@ class SourceService(
 
         return when {
             localLoader != null -> localLoader.load().map {
-                if (it.key == it.value)
-                    Option(value = it.value)
+                if (it.first == it.second)
+                    Option(value = it.second)
                 else
-                    Option(it.key, it.value)
+                    Option(it.first, it.second)
             }
             remoteLoader != null -> remoteLoader.load(source.url).map {
-                if (it.key == it.value)
-                    Option(value = it.value)
+                if (it.first == it.second)
+                    Option(value = it.second)
                 else
-                    Option(it.key, it.value)
+                    Option(it.first, it.second)
             }
             else -> throw RuntimeException("Local/Remote Loader is not available")
         }

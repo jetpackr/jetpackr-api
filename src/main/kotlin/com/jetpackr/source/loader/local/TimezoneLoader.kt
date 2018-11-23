@@ -13,7 +13,7 @@ class TimezoneLoader: LocalLoader() {
         }
     }
 
-    override suspend fun load(): Map<String, String> {
+    override suspend fun load(): List<Pair<String, String>> {
         val versions = mutableMapOf<String, String>()
 
         getZoneIds().forEach {
@@ -30,6 +30,6 @@ class TimezoneLoader: LocalLoader() {
             }
         }
 
-        return versions.toList().sortedBy { (_, value)  -> value }.toMap()
+        return versions.toList().sortedBy { (_, value)  -> value }
     }
 }

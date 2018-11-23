@@ -5,7 +5,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 
 class NPMRegistryLoader(client: HttpClient): RemoteLoader(client) {
-    override suspend fun doLoad(url: String): Map<String, String> {
+    override suspend fun doLoad(url: String): List<Pair<String, String>> {
         return client.get<NPMRegistryResponse>(url).time
                 .mapNotNull {
                     if (setOf("modified", "created").contains(it.key))
@@ -13,6 +13,6 @@ class NPMRegistryLoader(client: HttpClient): RemoteLoader(client) {
                     else
                         it.key
                 }
-                .associate { it to it }
+                .map { Pair(it, it) }
     }
 }
