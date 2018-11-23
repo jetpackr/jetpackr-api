@@ -1010,7 +1010,7 @@
         "label" : "Version",
         "span" : false,
         "options" : [ {
-          "value" : "12.ea.17-open"
+          "value" : "12.ea.20-open"
         }, {
           "value" : "11.0.1-zulu"
         }, {
@@ -1054,6 +1054,10 @@
           "label" : "Version",
           "span" : false,
           "options" : [ {
+            "value" : "5.0-rc-5"
+          }, {
+            "value" : "5.0-rc-4"
+          }, {
             "value" : "5.0-rc-3"
           }, {
             "value" : "5.0-rc-2"
@@ -1844,6 +1848,8 @@
           "label" : "Version",
           "span" : false,
           "options" : [ {
+            "value" : "1.0.0-beta.6"
+          }, {
             "value" : "1.0.0-beta.5"
           }, {
             "value" : "1.0.0-beta.4"
@@ -2956,7 +2962,8 @@
           }, {
             "value" : "1.0.0-1"
           }, {
-            "label" : "1.0.0-0",
+            "value" : "1.0.0-0"
+          }, {
             "value" : "1.0.0"
           }, {
             "value" : "0.12.14"
@@ -2973,12 +2980,14 @@
           }, {
             "value" : "0.12.11-1"
           }, {
-            "label" : "0.12.11-0",
+            "value" : "0.12.11-0"
+          }, {
             "value" : "0.12.11"
           }, {
             "value" : "0.12.10-1"
           }, {
-            "label" : "0.12.10-0",
+            "value" : "0.12.10-0"
+          }, {
             "value" : "0.12.10"
           }, {
             "value" : "0.12.9"
@@ -3001,7 +3010,8 @@
           }, {
             "value" : "0.12.3"
           }, {
-            "label" : "0.12.2-0",
+            "value" : "0.12.2-0"
+          }, {
             "value" : "0.12.2"
           }, {
             "value" : "0.12.1"
@@ -3588,7 +3598,10 @@
         }, {
           "value" : "8.0.1"
         }, {
-          "label" : "8",
+          "value" : "8"
+        }, {
+          "value" : "8.0"
+        }, {
           "value" : "8.0.0"
         }, {
           "value" : "5.7.24"
@@ -3794,11 +3807,17 @@
         "label" : "Version",
         "span" : false,
         "options" : [ {
-          "label" : "10.4-bionic",
+          "value" : "10.4-bionic"
+        }, {
           "value" : "10.4.0-bionic"
         }, {
-          "label" : "10.4",
+          "value" : "10.4"
+        }, {
           "value" : "10.4.0"
+        }, {
+          "value" : "10.3.11-bionic"
+        }, {
+          "value" : "10.3.11"
         }, {
           "value" : "10.3.10-bionic"
         }, {
@@ -3832,7 +3851,8 @@
         }, {
           "value" : "10.3-bionic"
         }, {
-          "label" : "10.3",
+          "value" : "10.3"
+        }, {
           "value" : "10.3.0"
         }, {
           "value" : "10.2.19-bionic"
@@ -4011,13 +4031,15 @@
         }, {
           "value" : "10.0-xenial"
         }, {
-          "label" : "10-jessie",
+          "value" : "10-jessie"
+        }, {
           "value" : "10.0-jessie"
         }, {
           "value" : "10-bionic"
         }, {
-          "label" : "10.0",
           "value" : "10"
+        }, {
+          "value" : "10.0"
         }, {
           "value" : "5.5.62-trusty"
         }, {
@@ -4138,10 +4160,12 @@
         }, {
           "value" : "11.1"
         }, {
-          "label" : "11-alpine",
+          "value" : "11-alpine"
+        }, {
           "value" : "11.0-alpine"
         }, {
-          "label" : "11",
+          "value" : "11"
+        }, {
           "value" : "11.0"
         }, {
           "value" : "11-rc1-alpine"
@@ -4188,10 +4212,12 @@
         }, {
           "value" : "10.1"
         }, {
-          "label" : "10-alpine",
+          "value" : "10-alpine"
+        }, {
           "value" : "10.0-alpine"
         }, {
-          "label" : "10",
+          "value" : "10"
+        }, {
           "value" : "10.0"
         }, {
           "value" : "10-rc1-alpine"
@@ -4260,7 +4286,8 @@
         }, {
           "value" : "9.6-alpine"
         }, {
-          "label" : "9.6",
+          "value" : "9.6"
+        }, {
           "value" : "9.6.0"
         }, {
           "value" : "9.6-rc1"
@@ -4327,7 +4354,8 @@
         }, {
           "value" : "9.5-alpine"
         }, {
-          "label" : "9.5",
+          "value" : "9.5"
+        }, {
           "value" : "9.5.0"
         }, {
           "value" : "9.5-rc1"
@@ -4404,7 +4432,8 @@
         }, {
           "value" : "9.4-alpine"
         }, {
-          "label" : "9.4",
+          "value" : "9.4"
+        }, {
           "value" : "9.4.0"
         }, {
           "value" : "9.4-rc1"
@@ -4561,7 +4590,8 @@
         }, {
           "value" : "9-alpine"
         }, {
-          "label" : "9",
+          "value" : "9"
+        }, {
           "value" : "9.0"
         }, {
           "value" : "8.4.22"
@@ -4662,13 +4692,20 @@
         }, {
           "value" : "4.0.1"
         }, {
-          "label" : "4-xenial",
+          "value" : "4-xenial"
+        }, {
+          "value" : "4.0-xenial"
+        }, {
           "value" : "4.0.0-xenial"
         }, {
-          "label" : "4-bionic",
+          "value" : "4-bionic"
+        }, {
           "value" : "4.0-bionic"
         }, {
-          "label" : "4",
+          "value" : "4"
+        }, {
+          "value" : "4.0"
+        }, {
           "value" : "4.0.0"
         }, {
           "value" : "4.0.0-rc6-xenial"
@@ -4691,7 +4728,8 @@
         }, {
           "value" : "4.0-rc-xenial"
         }, {
-          "label" : "4.0-rc",
+          "value" : "4.0-rc"
+        }, {
           "value" : "4.0.0-rc0"
         }, {
           "value" : "3.7.9-xenial"
@@ -4766,10 +4804,12 @@
         }, {
           "value" : "3.6-stretch"
         }, {
-          "label" : "3.6-jessie",
+          "value" : "3.6-jessie"
+        }, {
           "value" : "3.6.0-jessie"
         }, {
-          "label" : "3.6",
+          "value" : "3.6"
+        }, {
           "value" : "3.6.0"
         }, {
           "value" : "3.6.0-rc8-jessie"
@@ -4874,7 +4914,8 @@
         }, {
           "value" : "3.4-jessie"
         }, {
-          "label" : "3.4",
+          "value" : "3.4"
+        }, {
           "value" : "3.4.0"
         }, {
           "value" : "3.4.0-rc5"
@@ -4961,7 +5002,8 @@
         }, {
           "value" : "3.2-jessie"
         }, {
-          "label" : "3.2",
+          "value" : "3.2"
+        }, {
           "value" : "3.2.0"
         }, {
           "value" : "3.2.0-rc6"
@@ -5028,7 +5070,10 @@
         }, {
           "value" : "3-jessie"
         }, {
-          "label" : "3",
+          "value" : "3"
+        }, {
+          "value" : "3.0"
+        }, {
           "value" : "3.0.0"
         }, {
           "value" : "3.0.0-rc8"
@@ -5037,7 +5082,8 @@
         }, {
           "value" : "3.0.0-rc6"
         }, {
-          "label" : "2.8.0",
+          "value" : "2.8.0"
+        }, {
           "value" : "2.8"
         }, {
           "value" : "2.8.0-rc5"
@@ -5135,22 +5181,40 @@
         }, {
           "value" : "5.0.1"
         }, {
-          "label" : "5-32bit-stretch",
+          "value" : "5-32bit-stretch"
+        }, {
+          "value" : "5.0-32bit-stretch"
+        }, {
           "value" : "5.0.0-32bit-stretch"
         }, {
-          "label" : "5-32bit",
+          "value" : "5-32bit"
+        }, {
+          "value" : "5.0-32bit"
+        }, {
           "value" : "5.0.0-32bit"
         }, {
-          "label" : "5-stretch",
+          "value" : "5-stretch"
+        }, {
+          "value" : "5.0-stretch"
+        }, {
           "value" : "5.0.0-stretch"
         }, {
-          "label" : "5-alpine3.8",
+          "value" : "5-alpine3.8"
+        }, {
+          "value" : "5.0-alpine3.8"
+        }, {
           "value" : "5.0.0-alpine3.8"
         }, {
-          "label" : "5-alpine",
+          "value" : "5-alpine"
+        }, {
+          "value" : "5.0-alpine"
+        }, {
           "value" : "5.0.0-alpine"
         }, {
-          "label" : "5",
+          "value" : "5"
+        }, {
+          "value" : "5.0"
+        }, {
           "value" : "5.0.0"
         }, {
           "value" : "5.0-rc-32bit-stretch"
@@ -5285,22 +5349,34 @@
         }, {
           "value" : "4.0.1"
         }, {
-          "label" : "4-32bit-stretch",
+          "value" : "4-32bit-stretch"
+        }, {
           "value" : "4.0-32bit-stretch"
         }, {
-          "label" : "4-32bit",
+          "value" : "4-32bit"
+        }, {
+          "value" : "4.0-32bit"
+        }, {
           "value" : "4.0.0-32bit"
         }, {
-          "label" : "4-stretch",
+          "value" : "4-stretch"
+        }, {
           "value" : "4.0-stretch"
         }, {
-          "label" : "4-alpine3.8",
+          "value" : "4-alpine3.8"
+        }, {
           "value" : "4.0-alpine3.8"
         }, {
-          "label" : "4-alpine",
+          "value" : "4-alpine"
+        }, {
+          "value" : "4.0-alpine"
+        }, {
           "value" : "4.0.0-alpine"
         }, {
-          "label" : "4",
+          "value" : "4"
+        }, {
+          "value" : "4.0"
+        }, {
           "value" : "4.0.0"
         }, {
           "value" : "3.2.12-32bit-stretch"
@@ -5383,17 +5459,20 @@
         }, {
           "value" : "3.2-32bit-stretch"
         }, {
-          "label" : "3.2-32bit",
+          "value" : "3.2-32bit"
+        }, {
           "value" : "3.2.0-32bit"
         }, {
           "value" : "3.2-stretch"
         }, {
           "value" : "3.2-alpine3.8"
         }, {
-          "label" : "3.2-alpine",
+          "value" : "3.2-alpine"
+        }, {
           "value" : "3.2.0-alpine"
         }, {
-          "label" : "3.2",
+          "value" : "3.2"
+        }, {
           "value" : "3.2.0"
         }, {
           "value" : "3.0.7-32bit"
@@ -5428,17 +5507,22 @@
         }, {
           "value" : "3-32bit-stretch"
         }, {
-          "label" : "3-32bit",
+          "value" : "3-32bit"
+        }, {
           "value" : "3.0-32bit"
         }, {
           "value" : "3-stretch"
         }, {
           "value" : "3-alpine3.8"
         }, {
-          "label" : "3-alpine",
+          "value" : "3-alpine"
+        }, {
           "value" : "3.0-alpine"
         }, {
-          "label" : "3",
+          "value" : "3"
+        }, {
+          "value" : "3.0"
+        }, {
           "value" : "3.0.0"
         }, {
           "value" : "2.8.23-32bit"
@@ -5638,16 +5722,20 @@
         }, {
           "value" : "3.7.1"
         }, {
-          "label" : "3.7-management-alpine",
+          "value" : "3.7-management-alpine"
+        }, {
           "value" : "3.7.0-management-alpine"
         }, {
-          "label" : "3.7-management",
+          "value" : "3.7-management"
+        }, {
           "value" : "3.7.0-management"
         }, {
-          "label" : "3.7-alpine",
+          "value" : "3.7-alpine"
+        }, {
           "value" : "3.7.0-alpine"
         }, {
-          "label" : "3.7",
+          "value" : "3.7"
+        }, {
           "value" : "3.7.0"
         }, {
           "value" : "3.7-rc-management-alpine"
@@ -5776,12 +5864,14 @@
         }, {
           "value" : "3.6-management-alpine"
         }, {
-          "label" : "3.6-management",
+          "value" : "3.6-management"
+        }, {
           "value" : "3.6.0-management"
         }, {
           "value" : "3.6-alpine"
         }, {
-          "label" : "3.6",
+          "value" : "3.6"
+        }, {
           "value" : "3.6.0"
         }, {
           "value" : "3.6-rc-management-alpine"
@@ -5820,10 +5910,12 @@
         }, {
           "value" : "3.5.1"
         }, {
-          "label" : "3.5-management",
+          "value" : "3.5-management"
+        }, {
           "value" : "3.5.0-management"
         }, {
-          "label" : "3.5",
+          "value" : "3.5"
+        }, {
           "value" : "3.5.0"
         }, {
           "value" : "3.4.4-management"
@@ -5943,6 +6035,8 @@
         "label" : "Version",
         "span" : false,
         "options" : [ {
+          "value" : "6.5.1"
+        }, {
           "value" : "6.5.0"
         }, {
           "value" : "6.4.3"
@@ -6009,10 +6103,12 @@
         }, {
           "value" : "5.5.1"
         }, {
-          "label" : "5.5-alpine",
+          "value" : "5.5-alpine"
+        }, {
           "value" : "5.5.0-alpine"
         }, {
-          "label" : "5.5",
+          "value" : "5.5"
+        }, {
           "value" : "5.5.0"
         }, {
           "value" : "5.4.3-alpine"
@@ -6023,10 +6119,12 @@
         }, {
           "value" : "5.4.2"
         }, {
-          "label" : "5.4-alpine",
+          "value" : "5.4-alpine"
+        }, {
           "value" : "5.4.0-alpine"
         }, {
-          "label" : "5.4",
+          "value" : "5.4"
+        }, {
           "value" : "5.4.0"
         }, {
           "value" : "5.3.2-alpine"
@@ -6037,10 +6135,12 @@
         }, {
           "value" : "5.3.1"
         }, {
-          "label" : "5.3-alpine",
+          "value" : "5.3-alpine"
+        }, {
           "value" : "5.3.0-alpine"
         }, {
-          "label" : "5.3",
+          "value" : "5.3"
+        }, {
           "value" : "5.3.0"
         }, {
           "value" : "5.2.2-alpine"
@@ -6051,10 +6151,12 @@
         }, {
           "value" : "5.2.1"
         }, {
-          "label" : "5.2-alpine",
+          "value" : "5.2-alpine"
+        }, {
           "value" : "5.2.0-alpine"
         }, {
-          "label" : "5.2",
+          "value" : "5.2"
+        }, {
           "value" : "5.2.0"
         }, {
           "value" : "5.1.2-alpine"
@@ -6075,7 +6177,10 @@
         }, {
           "value" : "5-alpine"
         }, {
-          "label" : "5",
+          "value" : "5"
+        }, {
+          "value" : "5.0"
+        }, {
           "value" : "5.0.0"
         }, {
           "value" : "5.0.0-rc1"
@@ -6114,7 +6219,8 @@
         }, {
           "value" : "2.4-alpine"
         }, {
-          "label" : "2.4",
+          "value" : "2.4"
+        }, {
           "value" : "2.4.0"
         }, {
           "value" : "2.3.5"
@@ -6127,21 +6233,24 @@
         }, {
           "value" : "2.3.1"
         }, {
-          "label" : "2.3",
+          "value" : "2.3"
+        }, {
           "value" : "2.3.0"
         }, {
           "value" : "2.2.2"
         }, {
           "value" : "2.2.1"
         }, {
-          "label" : "2.2",
+          "value" : "2.2"
+        }, {
           "value" : "2.2.0"
         }, {
           "value" : "2.1.2"
         }, {
           "value" : "2.1.1"
         }, {
-          "label" : "2.1",
+          "value" : "2.1"
+        }, {
           "value" : "2.1.0"
         }, {
           "value" : "2.0.2"
@@ -6150,7 +6259,10 @@
         }, {
           "value" : "2-alpine"
         }, {
-          "label" : "2",
+          "value" : "2"
+        }, {
+          "value" : "2.0"
+        }, {
           "value" : "2.0.0"
         }, {
           "value" : "2.0.0-rc1"
@@ -6175,21 +6287,24 @@
         }, {
           "value" : "1.7-alpine"
         }, {
-          "label" : "1.7",
+          "value" : "1.7"
+        }, {
           "value" : "1.7.0"
         }, {
           "value" : "1.6.2"
         }, {
           "value" : "1.6.1"
         }, {
-          "label" : "1.6",
+          "value" : "1.6"
+        }, {
           "value" : "1.6.0"
         }, {
           "value" : "1.5.2"
         }, {
           "value" : "1.5.1"
         }, {
-          "label" : "1.5",
+          "value" : "1.5"
+        }, {
           "value" : "1.5.0"
         }, {
           "value" : "1.4.5"
@@ -6240,22 +6355,28 @@
         "label" : "Version",
         "span" : false,
         "options" : [ {
-          "label" : "7.5-slim",
+          "value" : "7.5-slim"
+        }, {
           "value" : "7.5.0-slim"
         }, {
-          "label" : "7.5-alpine",
+          "value" : "7.5-alpine"
+        }, {
           "value" : "7.5.0-alpine"
         }, {
-          "label" : "7.5",
+          "value" : "7.5"
+        }, {
           "value" : "7.5.0"
         }, {
-          "label" : "7.4-slim",
+          "value" : "7.4-slim"
+        }, {
           "value" : "7.4.0-slim"
         }, {
-          "label" : "7.4-alpine",
+          "value" : "7.4-alpine"
+        }, {
           "value" : "7.4.0-alpine"
         }, {
-          "label" : "7.4",
+          "value" : "7.4"
+        }, {
           "value" : "7.4.0"
         }, {
           "value" : "7.3.1-slim"
@@ -6264,13 +6385,16 @@
         }, {
           "value" : "7.3.1"
         }, {
-          "label" : "7.3-slim",
+          "value" : "7.3-slim"
+        }, {
           "value" : "7.3.0-slim"
         }, {
-          "label" : "7.3-alpine",
+          "value" : "7.3-alpine"
+        }, {
           "value" : "7.3.0-alpine"
         }, {
-          "label" : "7.3",
+          "value" : "7.3"
+        }, {
           "value" : "7.3.0"
         }, {
           "value" : "7.2.1-slim"
@@ -6279,22 +6403,28 @@
         }, {
           "value" : "7.2.1"
         }, {
-          "label" : "7.2-slim",
+          "value" : "7.2-slim"
+        }, {
           "value" : "7.2.0-slim"
         }, {
-          "label" : "7.2-alpine",
+          "value" : "7.2-alpine"
+        }, {
           "value" : "7.2.0-alpine"
         }, {
-          "label" : "7.2",
+          "value" : "7.2"
+        }, {
           "value" : "7.2.0"
         }, {
-          "label" : "7.1.0-slim",
+          "value" : "7.1.0-slim"
+        }, {
           "value" : "7.1-slim"
         }, {
-          "label" : "7.1-alpine",
+          "value" : "7.1-alpine"
+        }, {
           "value" : "7.1.0-alpine"
         }, {
-          "label" : "7.1",
+          "value" : "7.1"
+        }, {
           "value" : "7.1.0"
         }, {
           "value" : "7.0.1-slim"
@@ -6303,13 +6433,22 @@
         }, {
           "value" : "7.0.1"
         }, {
-          "label" : "7-slim",
+          "value" : "7-slim"
+        }, {
+          "value" : "7.0-slim"
+        }, {
           "value" : "7.0.0-slim"
         }, {
-          "label" : "7-alpine",
+          "value" : "7-alpine"
+        }, {
+          "value" : "7.0-alpine"
+        }, {
           "value" : "7.0.0-alpine"
         }, {
-          "label" : "7",
+          "value" : "7"
+        }, {
+          "value" : "7.0"
+        }, {
           "value" : "7.0.0"
         }, {
           "value" : "6.6.5-slim"
@@ -6344,10 +6483,12 @@
         }, {
           "value" : "6.6-slim"
         }, {
-          "label" : "6.6-alpine",
+          "value" : "6.6-alpine"
+        }, {
           "value" : "6.6.0-alpine"
         }, {
-          "label" : "6.6",
+          "value" : "6.6"
+        }, {
           "value" : "6.6.0"
         }, {
           "value" : "6.5.1-slim"
@@ -6358,10 +6499,12 @@
         }, {
           "value" : "6.5-slim"
         }, {
-          "label" : "6.5-alpine",
+          "value" : "6.5-alpine"
+        }, {
           "value" : "6.5.0-alpine"
         }, {
-          "label" : "6.5",
+          "value" : "6.5"
+        }, {
           "value" : "6.5.0"
         }, {
           "value" : "6.4.2-slim"
@@ -6376,35 +6519,44 @@
         }, {
           "value" : "6.4-slim"
         }, {
-          "label" : "6.4-alpine",
+          "value" : "6.4-alpine"
+        }, {
           "value" : "6.4.0-alpine"
         }, {
-          "label" : "6.4",
+          "value" : "6.4"
+        }, {
           "value" : "6.4.0"
         }, {
-          "label" : "6.3-slim",
+          "value" : "6.3-slim"
+        }, {
           "value" : "6.3.0-slim"
         }, {
-          "label" : "6.3-alpine",
+          "value" : "6.3-alpine"
+        }, {
           "value" : "6.3.0-alpine"
         }, {
-          "label" : "6.3",
+          "value" : "6.3"
+        }, {
           "value" : "6.3.0"
         }, {
           "value" : "6.2.1-alpine"
         }, {
           "value" : "6.2.1"
         }, {
-          "label" : "6.2-alpine",
+          "value" : "6.2-alpine"
+        }, {
           "value" : "6.2.0-alpine"
         }, {
-          "label" : "6.2",
+          "value" : "6.2"
+        }, {
           "value" : "6.2.0"
         }, {
-          "label" : "6.1-alpine",
+          "value" : "6.1-alpine"
+        }, {
           "value" : "6.1.0-alpine"
         }, {
-          "label" : "6.1",
+          "value" : "6.1"
+        }, {
           "value" : "6.1.0"
         }, {
           "value" : "6.0.1-alpine"
@@ -6413,10 +6565,16 @@
         }, {
           "value" : "6-slim"
         }, {
-          "label" : "6-alpine",
+          "value" : "6-alpine"
+        }, {
+          "value" : "6.0-alpine"
+        }, {
           "value" : "6.0.0-alpine"
         }, {
-          "label" : "6",
+          "value" : "6"
+        }, {
+          "value" : "6.0"
+        }, {
           "value" : "6.0.0"
         }, {
           "value" : "5.5.5-slim"
@@ -6447,7 +6605,8 @@
         }, {
           "value" : "5.5-alpine"
         }, {
-          "label" : "5.5",
+          "value" : "5.5"
+        }, {
           "value" : "5.5.0"
         }, {
           "value" : "5.4.1-alpine"
@@ -6456,7 +6615,8 @@
         }, {
           "value" : "5.4-alpine"
         }, {
-          "label" : "5.4",
+          "value" : "5.4"
+        }, {
           "value" : "5.4.0"
         }, {
           "value" : "5.3.2-alpine"
