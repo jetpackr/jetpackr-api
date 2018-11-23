@@ -30,7 +30,7 @@ class DockerHubLoaderTests : StringSpec() {
                         { "name": "8.0.1" }
                     ]
                 }
-            """
+            """.trimIndent()
     )
 
     val MYSQL_NEXT_PAGE2 = Pair(
@@ -42,7 +42,7 @@ class DockerHubLoaderTests : StringSpec() {
                         { "name": "5.5.61" }
                     ]
                 }
-            """
+            """.trimIndent()
     )
 
     val ELASTICSEARCH = Pair(
@@ -55,7 +55,7 @@ class DockerHubLoaderTests : StringSpec() {
                         { "name": "6.4.2" }
                     ]
                 }
-            """
+            """.trimIndent()
     )
 
     val ELASTICSEARCH_NEXT_PAGE2 = Pair(
@@ -68,7 +68,7 @@ class DockerHubLoaderTests : StringSpec() {
                         { "name": "5.6.9" }
                     ]
                 }
-            """
+            """.trimIndent()
     )
 
     val ELASTICSEARCH_NEXT_PAGE3 = Pair(
@@ -80,7 +80,7 @@ class DockerHubLoaderTests : StringSpec() {
                         { "name": "2.4.5" }
                     ]
                 }
-            """
+            """.trimIndent()
     )
 
     val RABBITMQ = Pair(
@@ -93,7 +93,7 @@ class DockerHubLoaderTests : StringSpec() {
                         { "name": "3.7.6" }
                     ]
                 }
-            """
+            """.trimIndent()
     )
 
     val mockEngine = MockEngine {
@@ -160,16 +160,17 @@ class DockerHubLoaderTests : StringSpec() {
             }
         }
     }
+
     val loader = DockerHubLoader(client)
 
     init {
         "return versions for 'MySQL'" {
             runBlocking {
-                val releases = loader.load(MYSQL.first)
-                log.info("releases: {}", releases)
+                val tags = loader.load(MYSQL.first)
+                log.info("releases: {}", tags)
 
-                releases.size `should be equal to` 4
-                releases.values `should contain all` listOf("5.7.14", "8.0.4")
+                tags.size `should be equal to` 4
+                tags.map { it.second } `should contain all` listOf("5.7.14", "8.0.4")
 
                 Any()
             }
@@ -177,11 +178,11 @@ class DockerHubLoaderTests : StringSpec() {
 
         "return versions for 'ElasticSearch'" {
             runBlocking {
-                val releases = loader.load(ELASTICSEARCH.first)
-                log.info("releases: {}", releases)
+                val versions = loader.load(ELASTICSEARCH.first)
+                log.info("releases: {}", versions)
 
-                releases.size `should be equal to` 6
-                releases.values `should contain all` listOf("2.4.5", "6.5.0", "5.6.9")
+                versions.size `should be equal to` 6
+                versions.map { it.second } `should contain all` listOf("2.4.5", "6.5.0", "5.6.9")
 
                 Any()
             }
@@ -189,11 +190,11 @@ class DockerHubLoaderTests : StringSpec() {
 
         "return versions for 'RabbitMQ'" {
             runBlocking {
-                val releases = loader.load(RABBITMQ.first)
-                log.info("releases: {}", releases)
+                val versions = loader.load(RABBITMQ.first)
+                log.info("releases: {}", versions)
 
-                releases.size `should be equal to` 3
-                releases.values `should contain all` listOf("3.7.8-management-alpine", "3.7.7-alpine", "3.7.6")
+                versions.size `should be equal to` 3
+                versions.map { it.second } `should contain all` listOf("3.7.8-management-alpine", "3.7.7-alpine", "3.7.6")
 
                 Any()
             }

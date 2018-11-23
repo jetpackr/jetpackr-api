@@ -42,10 +42,10 @@ class TimezoneLoaderTests : StringSpec() {
         }
     }
     init {
-        "test deprecated timezones" {
+        "return deprecated timezones" {
             runBlocking {
                 val timezones = mock.load()
-                log.info("releases: {}", timezones)
+                log.info("timezones: {}", timezones)
 
                 timezones.size `should be equal to` 0
 
@@ -53,13 +53,13 @@ class TimezoneLoaderTests : StringSpec() {
             }
         }
 
-        "test valid timezones" {
+        "return valid timezones" {
             runBlocking {
                 val timezones = mock.load()
-                log.info("releases: {}", timezones)
+                log.info("timezones: {}", timezones)
 
                 timezones.size `should be equal to` 5
-                timezones.values `should contain all` listOf(
+                timezones.map { it.second } `should contain all` listOf(
                         "Atlantic/Faroe",
                         "Pacific/Majuro",
                         "Indian/Chagos"

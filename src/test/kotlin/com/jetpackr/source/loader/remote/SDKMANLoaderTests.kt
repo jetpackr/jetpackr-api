@@ -68,36 +68,36 @@ class SDKMANLoaderTests : StringSpec() {
     val loader = SDKMANLoader(client)
 
     init {
-        "test releases for 'Gradle'" {
+        "return versions for 'Gradle'" {
             runBlocking {
-                val releases = loader.load(GRADLE.first)
-                log.info("releases: {}", releases)
-                releases.size `should be equal to` 8
-                releases.values `should contain all`  listOf("5.0-rc-1", "4.5.1", "4.8.1", "4.8")
+                val versions = loader.load(GRADLE.first)
+                log.info("versions: {}", versions)
+                versions.size `should be equal to` 8
+                versions.map { it.second } `should contain all`  listOf("5.0-rc-1", "4.5.1", "4.8.1", "4.8")
             }
         }
 
-        "test releases for 'Maven'" {
+        "return versions for 'Maven'" {
             runBlocking {
-                val releases = loader.load(MAVEN.first)
+                val versions = loader.load(MAVEN.first)
 
-                log.info("releases: {}", releases)
+                log.info("versions: {}", versions)
 
-                releases.size `should be equal to` 6
-                releases.values `should contain all`  listOf("3.5.3", "3.3.9", "3.6.0")
+                versions.size `should be equal to` 6
+                versions.map { it.second } `should contain all`  listOf("3.5.3", "3.3.9", "3.6.0")
 
                 Any()
             }
         }
 
-        "test releases for 'sbt'" {
+        "return releases for 'sbt'" {
             runBlocking {
-                val releases = loader.load(SBT.first)
+                val versions = loader.load(SBT.first)
 
-                log.info("releases: {}", releases)
+                log.info("versions: {}", versions)
 
-                releases.size `should be equal to` 3
-                releases.values `should contain all` listOf("1.2.6", "1.2.5", "1.2.4")
+                versions.size `should be equal to` 3
+                versions.map { it.second } `should contain all` listOf("1.2.6", "1.2.5", "1.2.4")
 
                 Any()
             }
