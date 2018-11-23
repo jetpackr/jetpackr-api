@@ -160,8 +160,8 @@ class NPMRegistryLoaderTests : StringSpec() {
                 val versions = loader.load(ANGULAR.first)
                 log.info("versions: {}", versions)
 
-                versions.size `should be equal to` 11
-                versions.map { it.second } `should contain all` listOf("6.0.0-beta.2", "7.1.0-rc.0", "1.0.0-beta.28.3", "1.7.0")
+                versions.size `should be equal to` 6
+                versions.map { it.second } `should contain all` listOf("6.2.7", "7.0.5", "7.0.6", "1.7.0")
 
                 Any()
             }
@@ -172,8 +172,8 @@ class NPMRegistryLoaderTests : StringSpec() {
                 val versions = loader.load(REACT.first)
                 log.info("versions: {}", versions)
 
-                versions.size `should be equal to` 10
-                versions.map { it.second } `should contain all` listOf("1.3.0", "0.2.0-alpha.1", "1.5.1", "2.0.0-next.096703ab")
+                versions.size `should be equal to` 6
+                versions.map { it.second } `should contain all` listOf("1.3.0", "1.5.1", "1.2.1")
 
                 Any()
             }
@@ -184,8 +184,8 @@ class NPMRegistryLoaderTests : StringSpec() {
                 val versions = loader.load(VUE.first)
                 log.info("versions: {}", versions)
 
-                versions.size `should be equal to` 8
-                versions.map { it.second } `should contain all` listOf("3.1.0", "3.0.0-rc.6", "3.0.0-beta.10", "3.0.0-alpha.1")
+                versions.size `should be equal to` 4
+                versions.map { it.second } `should contain all` listOf("3.1.2", "3.1.0")
 
                 Any()
             }
@@ -195,8 +195,8 @@ class NPMRegistryLoaderTests : StringSpec() {
             runBlocking {
                 val versions = loader.load(YEOMAN.first)
                 log.info("versions: {}", versions)
-                versions.size `should be equal to` 6
-                versions.map { it.second } `should contain all` listOf("1.0.0-beta.2", "2.0.1", "2.0.2", "1.8.0")
+                versions.size `should be equal to` 4
+                versions.map { it.second } `should contain all` listOf("2.0.1", "2.0.2", "1.8.0")
 
                 Any()
             }

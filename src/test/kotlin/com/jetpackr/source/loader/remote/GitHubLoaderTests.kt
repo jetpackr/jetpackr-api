@@ -209,8 +209,8 @@ class GitHubLoaderTests : StringSpec() {
                 val versions = loader.load(RUBY.first)
                 log.info("versions: {}", versions)
 
-                versions.size `should be equal to` 7
-                versions.map { it.second } `should contain all` listOf("v2_3_0", "v2_3_3", "v2_6_0_preview2")
+                versions.size `should be equal to` 4
+                versions.map { it.second } `should contain all` listOf("v2_3_0", "v2_3_3")
 
                 Any()
             }
