@@ -3,7 +3,7 @@ package com.jetpackr.data.parameter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
-class Option (
+data class Option (
         val label: String? = null,
         val value: String
 ) {
