@@ -14,4 +14,4 @@ Jetpackr API
 ./gradlew build
 ```
 
-A work in progress. This project will act as an API for [jetpackr-ui](https://github.com/jetpacker/jetpacker-ui "jetpacker-ui")
+A work in progress. This project will act as an API for [jetpackr-ui](https://github.com/jetpackr/jetpackr-ui "jetpackr-ui")
