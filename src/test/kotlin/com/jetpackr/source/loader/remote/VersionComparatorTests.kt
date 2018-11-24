@@ -1,6 +1,7 @@
 package com.jetpackr.source.loader.remote
 
 import io.kotlintest.matchers.collections.shouldContainExactly
+import io.kotlintest.matchers.collections.shouldHaveSize
 import io.kotlintest.specs.StringSpec
 import mu.KotlinLogging
 
@@ -20,7 +21,8 @@ class VersionComparatorTests : StringSpec() {
             ).sortedWith(VersionComparator)
             log.info("versions: {}", versions)
 
-            versions `shouldContainExactly` listOf(
+            versions shouldHaveSize 7
+            versions shouldContainExactly listOf(
                     Pair("v2_6_0_preview3", "v2_6_0_preview3"),
                     Pair("v2_6_0_preview2", "v2_6_0_preview2"),
                     Pair("v2_3_5", "v2_3_5"),
@@ -44,7 +46,8 @@ class VersionComparatorTests : StringSpec() {
             ).sortedWith(VersionComparator)
             log.info("versions: {}", versions)
 
-            versions `shouldContainExactly` listOf(
+            versions shouldHaveSize 8
+            versions shouldContainExactly listOf(
                     Pair("4.3.1", "4.3.1"),
                     Pair("3.5.2", "3.5.2"),
                     Pair("3.4", "3.4"),

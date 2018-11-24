@@ -18,9 +18,9 @@ import mu.KotlinLogging
 import org.amshove.kluent.`should contain all`
 
 class GitHubLoaderTests : StringSpec() {
-    val log = KotlinLogging.logger {}
+    private val log = KotlinLogging.logger {}
 
-    val NODE = Pair(
+    private val node = Pair(
             "https://api.github.com/repos/nodejs/node/tags",
             """
                 [
@@ -78,7 +78,7 @@ class GitHubLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val RUBY = Pair(
+    private val ruby = Pair(
             "https://api.github.com/repos/ruby/ruby/tags",
             """
                 [
@@ -159,19 +159,19 @@ class GitHubLoaderTests : StringSpec() {
     val mockEngine = MockEngine {
         log.info("url: {}", url.fullUrl)
         when (url.fullUrl) {
-            NODE.first -> {
+            node.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(NODE.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(node.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            RUBY.first -> {
+            ruby.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(RUBY.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(ruby.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
@@ -194,10 +194,10 @@ class GitHubLoaderTests : StringSpec() {
     init {
         "load Node.js' versions" {
             runBlocking {
-                val versions = loader.load(NODE.first)
+                val versions = loader.load(node.first)
                 log.info("versions: {}", versions)
 
-                versions `shouldHaveSize` 5
+                versions shouldHaveSize 5
                 versions.map { it.second } `should contain all` listOf("v9.7.0", "v11.2.0", "v9.7.1")
 
                 Any()
@@ -206,10 +206,10 @@ class GitHubLoaderTests : StringSpec() {
 
         "load Ruby's versions" {
             runBlocking {
-                val versions = loader.load(RUBY.first)
+                val versions = loader.load(ruby.first)
                 log.info("versions: {}", versions)
 
-                versions `shouldHaveSize` 4
+                versions shouldHaveSize 4
                 versions.map { it.second } `should contain all` listOf("v2_3_0", "v2_3_3")
 
                 Any()

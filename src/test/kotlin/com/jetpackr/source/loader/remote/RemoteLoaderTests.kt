@@ -3,6 +3,7 @@ package com.jetpackr.source.loader.remote
 import com.jetpackr.common.fullUrl
 import io.kotlintest.Description
 import io.kotlintest.matchers.collections.shouldContainExactly
+import io.kotlintest.matchers.collections.shouldHaveSize
 import io.kotlintest.specs.StringSpec
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
@@ -66,7 +67,8 @@ class RemoteLoaderTests : StringSpec() {
                 val versions = mock.load(RUBY_URL)
                 log.info("version: {}", versions)
 
-                versions `shouldContainExactly` listOf(
+                versions shouldHaveSize 5
+                versions shouldContainExactly listOf(
                         Pair("v2_3_5", "v2_3_5"),
                         Pair("v2_3_3", "v2_3_3"),
                         Pair("v2_3_2", "v2_3_2"),
@@ -83,7 +85,8 @@ class RemoteLoaderTests : StringSpec() {
                 val versions = mock.load(GENERIC_URL)
                 log.info("version: {}", versions)
 
-                versions `shouldContainExactly` listOf(
+                versions shouldHaveSize 8
+                versions shouldContainExactly listOf(
                         Pair("4.3.1", "4.3.1"),
                         Pair("3.5.2", "3.5.2"),
                         Pair("3.4", "3.4"),

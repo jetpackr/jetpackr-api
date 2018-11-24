@@ -32,8 +32,8 @@ class VersionFilterTests : StringSpec() {
             ).filter(VersionFilter)
             log.info("versions: {}", versions)
 
-            versions `shouldHaveSize` 8
-            versions `shouldContainExactlyInAnyOrder` listOf(
+            versions shouldHaveSize 8
+            versions shouldContainExactlyInAnyOrder listOf(
                     Pair("1.2.7", "1.2.7"),
                     Pair("2.6.7-rc6", "2.6.7-rc6"),
                     Pair("7.6", "7.6"),

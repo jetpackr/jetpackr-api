@@ -18,9 +18,9 @@ import mu.KotlinLogging
 import org.amshove.kluent.`should contain all`
 
 class DockerHubLoaderTests : StringSpec() {
-    val log = KotlinLogging.logger {}
+    private val log = KotlinLogging.logger {}
 
-    val MYSQL = Pair(
+    private val mysql = Pair(
             "https://registry.hub.docker.com/v2/repositories/library/mysql/tags",
             """
                 {
@@ -33,7 +33,7 @@ class DockerHubLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val MYSQL_NEXT_PAGE2 = Pair(
+    private val mysqlNextPage2 = Pair(
             "https://registry.hub.docker.com/v2/repositories/library/mysql/tags/?page=2",
             """
                 {
@@ -45,7 +45,7 @@ class DockerHubLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val ELASTICSEARCH = Pair(
+    private val elasticSearch = Pair(
             "https://registry.hub.docker.com/v2/repositories/library/elasticsearch/tags",
             """
                 {
@@ -58,7 +58,7 @@ class DockerHubLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val ELASTICSEARCH_NEXT_PAGE2 = Pair(
+    private val elasticSearchNextPage2 = Pair(
             "https://registry.hub.docker.com/v2/repositories/library/elasticsearch/tags/?page=2",
             """
                 {
@@ -71,7 +71,7 @@ class DockerHubLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val ELASTICSEARCH_NEXT_PAGE3 = Pair(
+    private val elasticSearchNextPage3 = Pair(
             "https://registry.hub.docker.com/v2/repositories/library/elasticsearch/tags/?page=3",
             """
                 {
@@ -83,7 +83,7 @@ class DockerHubLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val RABBITMQ = Pair(
+    private val rabbitMq = Pair(
             "https://registry.hub.docker.com/v2/repositories/library/rabbitmq/tags",
             """
                 {
@@ -99,51 +99,51 @@ class DockerHubLoaderTests : StringSpec() {
     val mockEngine = MockEngine {
         log.info("url: {}", url.fullUrl)
         when (url.fullUrl) {
-            MYSQL.first -> {
+            mysql.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(MYSQL.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(mysql.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            MYSQL_NEXT_PAGE2.first -> {
+            mysqlNextPage2.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(MYSQL_NEXT_PAGE2.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(mysqlNextPage2.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            ELASTICSEARCH.first -> {
+            elasticSearch.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(ELASTICSEARCH.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(elasticSearch.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            ELASTICSEARCH_NEXT_PAGE2.first -> {
+            elasticSearchNextPage2.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(ELASTICSEARCH_NEXT_PAGE2.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(elasticSearchNextPage2.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            ELASTICSEARCH_NEXT_PAGE3.first -> {
+            elasticSearchNextPage3.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(ELASTICSEARCH_NEXT_PAGE3.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(elasticSearchNextPage3.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            RABBITMQ.first -> {
+            rabbitMq.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(RABBITMQ.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(rabbitMq.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
@@ -166,10 +166,10 @@ class DockerHubLoaderTests : StringSpec() {
     init {
         "load MySQL's versions" {
             runBlocking {
-                val tags = loader.load(MYSQL.first)
+                val tags = loader.load(mysql.first)
                 log.info("releases: {}", tags)
 
-                tags `shouldHaveSize` 4
+                tags shouldHaveSize 4
                 tags.map { it.second } `should contain all` listOf("5.7.14", "8.0.4")
 
                 Any()
@@ -178,10 +178,10 @@ class DockerHubLoaderTests : StringSpec() {
 
         "load ElasticSearch's versions" {
             runBlocking {
-                val versions = loader.load(ELASTICSEARCH.first)
+                val versions = loader.load(elasticSearch.first)
                 log.info("releases: {}", versions)
 
-                versions `shouldHaveSize` 6
+                versions shouldHaveSize 6
                 versions.map { it.second } `should contain all` listOf("2.4.5", "6.5.0", "5.6.9")
 
                 Any()
@@ -190,10 +190,10 @@ class DockerHubLoaderTests : StringSpec() {
 
         "load RabbitMQ's versions" {
             runBlocking {
-                val versions = loader.load(RABBITMQ.first)
+                val versions = loader.load(rabbitMq.first)
                 log.info("releases: {}", versions)
 
-                versions `shouldHaveSize` 3
+                versions shouldHaveSize 3
                 versions.map { it.second } `should contain all` listOf("3.7.8-management-alpine", "3.7.7-alpine", "3.7.6")
 
                 Any()

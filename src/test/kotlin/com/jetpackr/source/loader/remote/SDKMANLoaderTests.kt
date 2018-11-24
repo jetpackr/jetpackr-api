@@ -72,7 +72,7 @@ class SDKMANLoaderTests : StringSpec() {
             runBlocking {
                 val versions = loader.load(GRADLE.first)
                 log.info("versions: {}", versions)
-                versions `shouldHaveSize` 8
+                versions shouldHaveSize 8
                 versions.map { it.second } `should contain all`  listOf("5.0-rc-1", "4.5.1", "4.8.1", "4.8")
             }
         }
@@ -83,7 +83,7 @@ class SDKMANLoaderTests : StringSpec() {
 
                 log.info("versions: {}", versions)
 
-                versions `shouldHaveSize` 6
+                versions shouldHaveSize 6
                 versions.map { it.second } `should contain all`  listOf("3.5.3", "3.3.9", "3.6.0")
 
                 Any()
@@ -96,7 +96,7 @@ class SDKMANLoaderTests : StringSpec() {
 
                 log.info("versions: {}", versions)
 
-                versions `shouldHaveSize` 3
+                versions shouldHaveSize 3
                 versions.map { it.second } `should contain all` listOf("1.2.6", "1.2.5", "1.2.4")
 
                 Any()

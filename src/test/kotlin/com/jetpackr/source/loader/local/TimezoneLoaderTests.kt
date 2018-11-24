@@ -1,21 +1,21 @@
 package com.jetpackr.source.loader.local
 
 import io.kotlintest.Description
+import io.kotlintest.matchers.collections.shouldHaveSize
 import io.kotlintest.specs.StringSpec
 import io.mockk.every
 import io.mockk.spyk
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
-import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should contain all`
 
 class TimezoneLoaderTests : StringSpec() {
-    val log = KotlinLogging.logger {}
+    private val log = KotlinLogging.logger {}
 
-    val mock = spyk<TimezoneLoader>()
+    private val mock = spyk<TimezoneLoader>()
 
-    val LOAD_DEPRECATED_TIMEZONES = "load deprecated timezones"
-    val DEPRECATED_TIMEZONES = listOf(
+    private val loadDeprecatedTimezones = "load deprecated timezones"
+    private val deprecatedTimezones = listOf(
             "WINDOWS~Europe/Helsinki",
             "MILITARY~UTC+12:00",
             "Etc/GMT+10",
@@ -23,8 +23,8 @@ class TimezoneLoaderTests : StringSpec() {
             "HST"
     )
 
-    val LOAD_VALID_TIMEZONES = "load valid timezones"
-    val VALID_TIMEZONES = listOf(
+    private val loadValidTimezones = "load valid timezones"
+    private val validTimezones = listOf(
             "Atlantic/Faroe",
             "Asia/Nicosia",
             "Pacific/Majuro",
@@ -35,33 +35,33 @@ class TimezoneLoaderTests : StringSpec() {
     override fun beforeTest(description: Description) {
         val name = description.name
 
-        if (name.contains(LOAD_DEPRECATED_TIMEZONES)) {
-            every { mock["getZoneIds"]() } returns DEPRECATED_TIMEZONES
+        if (name.contains(loadDeprecatedTimezones)) {
+            every { mock["getZoneIds"]() } returns deprecatedTimezones
         }
 
-        if (name.contains(LOAD_VALID_TIMEZONES)) {
-            every { mock["getZoneIds"]() } returns VALID_TIMEZONES
+        if (name.contains(loadValidTimezones)) {
+            every { mock["getZoneIds"]() } returns validTimezones
         }
     }
 
     init {
-        LOAD_DEPRECATED_TIMEZONES {
+        loadDeprecatedTimezones {
             runBlocking {
                 val timezones = mock.load()
                 log.info("timezones: {}", timezones)
 
-                timezones.size `should be equal to` 0
+                timezones shouldHaveSize 0
 
                 Any()
             }
         }
 
-        LOAD_VALID_TIMEZONES {
+        loadValidTimezones {
             runBlocking {
                 val timezones = mock.load()
                 log.info("timezones: {}", timezones)
 
-                timezones.size `should be equal to` 5
+                timezones shouldHaveSize 5
                 timezones.map { it.second } `should contain all` listOf(
                         "Atlantic/Faroe",
                         "Pacific/Majuro",

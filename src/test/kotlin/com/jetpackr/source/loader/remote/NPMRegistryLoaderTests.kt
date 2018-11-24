@@ -18,9 +18,9 @@ import mu.KotlinLogging
 import org.amshove.kluent.`should contain all`
 
 class NPMRegistryLoaderTests : StringSpec() {
-    val log = KotlinLogging.logger {}
+    private val log = KotlinLogging.logger {}
 
-    val ANGULAR = Pair(
+    private val angular = Pair(
             "https://registry.npmjs.com/@angular/cli",
             """
                 {
@@ -43,7 +43,7 @@ class NPMRegistryLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val REACT = Pair(
+    private val react = Pair(
             "https://registry.npmjs.com/create-react-app",
             """
                 {
@@ -65,7 +65,7 @@ class NPMRegistryLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val VUE = Pair(
+    private val vue = Pair(
             "https://registry.npmjs.com/@vue/cli",
             """
                 {
@@ -85,7 +85,7 @@ class NPMRegistryLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val YEOMAN = Pair(
+    private val yeoman = Pair(
             "https://registry.npmjs.com/yo",
             """
                 {
@@ -103,38 +103,38 @@ class NPMRegistryLoaderTests : StringSpec() {
             """.trimIndent()
     )
 
-    val mockEngine = MockEngine {
+    private val mockEngine = MockEngine {
         log.info("url: {}", url.fullUrl)
         when (url.fullUrl) {
-            ANGULAR.first -> {
+            angular.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(ANGULAR.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(angular.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            REACT.first -> {
+            react.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(REACT.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(react.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            VUE.first -> {
+            vue.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(VUE.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(vue.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
-            YEOMAN.first -> {
+            yeoman.first -> {
                 MockHttpResponse(
                         call,
                         HttpStatusCode.OK,
-                        ByteReadChannel(YEOMAN.second.toByteArray(Charsets.UTF_8)),
+                        ByteReadChannel(yeoman.second.toByteArray(Charsets.UTF_8)),
                         headersOf("Content-Type" to listOf(Application.Json.toString()))
                 )
             }
@@ -144,7 +144,7 @@ class NPMRegistryLoaderTests : StringSpec() {
         }
     }
 
-    val client = HttpClient(mockEngine) {
+    private val client = HttpClient(mockEngine) {
         install(JsonFeature) {
             serializer = JacksonSerializer {
                 configure(FAIL_ON_UNKNOWN_PROPERTIES, false)
@@ -152,15 +152,15 @@ class NPMRegistryLoaderTests : StringSpec() {
         }
     }
 
-    val loader = NPMRegistryLoader(client)
+    private val loader = NPMRegistryLoader(client)
 
     init {
         "load Angular's verions" {
             runBlocking {
-                val versions = loader.load(ANGULAR.first)
+                val versions = loader.load(angular.first)
                 log.info("versions: {}", versions)
 
-                versions `shouldHaveSize` 6
+                versions shouldHaveSize 6
                 versions.map { it.second } `should contain all` listOf("6.2.7", "7.0.5", "7.0.6", "1.7.0")
 
                 Any()
@@ -169,10 +169,10 @@ class NPMRegistryLoaderTests : StringSpec() {
 
         "load React's versions" {
             runBlocking {
-                val versions = loader.load(REACT.first)
+                val versions = loader.load(react.first)
                 log.info("versions: {}", versions)
 
-                versions `shouldHaveSize` 6
+                versions shouldHaveSize 6
                 versions.map { it.second } `should contain all` listOf("1.3.0", "1.5.1", "1.2.1")
 
                 Any()
@@ -181,10 +181,10 @@ class NPMRegistryLoaderTests : StringSpec() {
 
         "load Vue.js' versions" {
             runBlocking {
-                val versions = loader.load(VUE.first)
+                val versions = loader.load(vue.first)
                 log.info("versions: {}", versions)
 
-                versions `shouldHaveSize` 4
+                versions shouldHaveSize 4
                 versions.map { it.second } `should contain all` listOf("3.1.2", "3.1.0")
 
                 Any()
@@ -193,9 +193,9 @@ class NPMRegistryLoaderTests : StringSpec() {
 
         "load Yeoman's versions" {
             runBlocking {
-                val versions = loader.load(YEOMAN.first)
+                val versions = loader.load(yeoman.first)
                 log.info("versions: {}", versions)
-                versions `shouldHaveSize` 4
+                versions shouldHaveSize 4
                 versions.map { it.second } `should contain all` listOf("2.0.1", "2.0.2", "1.8.0")
 
                 Any()
