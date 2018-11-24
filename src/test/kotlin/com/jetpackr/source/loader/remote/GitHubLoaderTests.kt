@@ -2,6 +2,7 @@ package com.jetpackr.source.loader.remote
 
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.jetpackr.common.fullUrl
+import io.kotlintest.matchers.collections.shouldHaveSize
 import io.kotlintest.specs.StringSpec
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
@@ -14,7 +15,6 @@ import io.ktor.http.headersOf
 import kotlinx.coroutines.io.ByteReadChannel
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
-import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should contain all`
 
 class GitHubLoaderTests : StringSpec() {
@@ -192,24 +192,24 @@ class GitHubLoaderTests : StringSpec() {
     val loader = GitHubLoader(client)
 
     init {
-        "return versions for 'Node.js'" {
+        "load Node.js' versions" {
             runBlocking {
                 val versions = loader.load(NODE.first)
                 log.info("versions: {}", versions)
 
-                versions.size `should be equal to` 5
+                versions `shouldHaveSize` 5
                 versions.map { it.second } `should contain all` listOf("v9.7.0", "v11.2.0", "v9.7.1")
 
                 Any()
             }
         }
 
-        "return versions for 'Ruby'" {
+        "load Ruby's versions" {
             runBlocking {
                 val versions = loader.load(RUBY.first)
                 log.info("versions: {}", versions)
 
-                versions.size `should be equal to` 4
+                versions `shouldHaveSize` 4
                 versions.map { it.second } `should contain all` listOf("v2_3_0", "v2_3_3")
 
                 Any()

@@ -14,6 +14,7 @@ class TimezoneLoaderTests : StringSpec() {
 
     val mock = spyk<TimezoneLoader>()
 
+    val LOAD_DEPRECATED_TIMEZONES = "load deprecated timezones"
     val DEPRECATED_TIMEZONES = listOf(
             "WINDOWS~Europe/Helsinki",
             "MILITARY~UTC+12:00",
@@ -22,6 +23,7 @@ class TimezoneLoaderTests : StringSpec() {
             "HST"
     )
 
+    val LOAD_VALID_TIMEZONES = "load valid timezones"
     val VALID_TIMEZONES = listOf(
             "Atlantic/Faroe",
             "Asia/Nicosia",
@@ -33,16 +35,17 @@ class TimezoneLoaderTests : StringSpec() {
     override fun beforeTest(description: Description) {
         val name = description.name
 
-        if (name.contains("deprecated timezones")) {
+        if (name.contains(LOAD_DEPRECATED_TIMEZONES)) {
             every { mock["getZoneIds"]() } returns DEPRECATED_TIMEZONES
         }
 
-        if (name.contains("valid timezones")) {
+        if (name.contains(LOAD_VALID_TIMEZONES)) {
             every { mock["getZoneIds"]() } returns VALID_TIMEZONES
         }
     }
+
     init {
-        "return deprecated timezones" {
+        LOAD_DEPRECATED_TIMEZONES {
             runBlocking {
                 val timezones = mock.load()
                 log.info("timezones: {}", timezones)
@@ -53,7 +56,7 @@ class TimezoneLoaderTests : StringSpec() {
             }
         }
 
-        "return valid timezones" {
+        LOAD_VALID_TIMEZONES {
             runBlocking {
                 val timezones = mock.load()
                 log.info("timezones: {}", timezones)

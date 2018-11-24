@@ -2,6 +2,7 @@ package com.jetpackr.source.loader.remote
 
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.jetpackr.common.fullUrl
+import io.kotlintest.matchers.collections.shouldHaveSize
 import io.kotlintest.specs.StringSpec
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
@@ -14,7 +15,6 @@ import io.ktor.http.headersOf
 import kotlinx.coroutines.io.ByteReadChannel
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
-import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should contain all`
 
 class DockerHubLoaderTests : StringSpec() {
@@ -164,36 +164,36 @@ class DockerHubLoaderTests : StringSpec() {
     val loader = DockerHubLoader(client)
 
     init {
-        "return versions for 'MySQL'" {
+        "load MySQL's versions" {
             runBlocking {
                 val tags = loader.load(MYSQL.first)
                 log.info("releases: {}", tags)
 
-                tags.size `should be equal to` 4
+                tags `shouldHaveSize` 4
                 tags.map { it.second } `should contain all` listOf("5.7.14", "8.0.4")
 
                 Any()
             }
         }
 
-        "return versions for 'ElasticSearch'" {
+        "load ElasticSearch's versions" {
             runBlocking {
                 val versions = loader.load(ELASTICSEARCH.first)
                 log.info("releases: {}", versions)
 
-                versions.size `should be equal to` 6
+                versions `shouldHaveSize` 6
                 versions.map { it.second } `should contain all` listOf("2.4.5", "6.5.0", "5.6.9")
 
                 Any()
             }
         }
 
-        "return versions for 'RabbitMQ'" {
+        "load RabbitMQ's versions" {
             runBlocking {
                 val versions = loader.load(RABBITMQ.first)
                 log.info("releases: {}", versions)
 
-                versions.size `should be equal to` 3
+                versions `shouldHaveSize` 3
                 versions.map { it.second } `should contain all` listOf("3.7.8-management-alpine", "3.7.7-alpine", "3.7.6")
 
                 Any()

@@ -1,6 +1,7 @@
 package com.jetpackr.source.loader.remote
 
 import com.jetpackr.common.fullUrl
+import io.kotlintest.matchers.collections.shouldHaveSize
 import io.kotlintest.specs.StringSpec
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
@@ -11,7 +12,6 @@ import io.ktor.http.headersOf
 import kotlinx.coroutines.io.ByteReadChannel
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
-import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should contain all`
 
 class SDKMANLoaderTests : StringSpec() {
@@ -68,35 +68,35 @@ class SDKMANLoaderTests : StringSpec() {
     val loader = SDKMANLoader(client)
 
     init {
-        "return versions for 'Gradle'" {
+        "load Gradle's versions" {
             runBlocking {
                 val versions = loader.load(GRADLE.first)
                 log.info("versions: {}", versions)
-                versions.size `should be equal to` 8
+                versions `shouldHaveSize` 8
                 versions.map { it.second } `should contain all`  listOf("5.0-rc-1", "4.5.1", "4.8.1", "4.8")
             }
         }
 
-        "return versions for 'Maven'" {
+        "load Maven's versions" {
             runBlocking {
                 val versions = loader.load(MAVEN.first)
 
                 log.info("versions: {}", versions)
 
-                versions.size `should be equal to` 6
+                versions `shouldHaveSize` 6
                 versions.map { it.second } `should contain all`  listOf("3.5.3", "3.3.9", "3.6.0")
 
                 Any()
             }
         }
 
-        "return releases for 'sbt'" {
+        "load releases for sbt" {
             runBlocking {
                 val versions = loader.load(SBT.first)
 
                 log.info("versions: {}", versions)
 
-                versions.size `should be equal to` 3
+                versions `shouldHaveSize` 3
                 versions.map { it.second } `should contain all` listOf("1.2.6", "1.2.5", "1.2.4")
 
                 Any()
